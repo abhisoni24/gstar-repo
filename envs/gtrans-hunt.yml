@@ -1,0 +1,10 @@
+name: gtrans-hunt
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - PyMySQL==1.1.1
+      - cryptography==43.0.3
+      - duckdb==2.0.0

@@ -1,0 +1,1067 @@
+{
+ "_comment": "G for MySQL: the core of ValScope's grammar. Written by make_inputs.py.",
+ "start": "Stmt",
+ "query_sort": "Q",
+ "pred_sort": "CA",
+ "domains": {
+  "int": {
+   "type": "int",
+   "min": -3,
+   "max": 12,
+   "ordered": true
+  },
+  "pos": {
+   "type": "int",
+   "min": 0,
+   "max": 9,
+   "ordered": true
+  },
+  "str": {
+   "type": "text",
+   "values": [
+    "a",
+    "b",
+    "c",
+    "ab",
+    "ba"
+   ],
+   "ordered": false
+  }
+ },
+ "productions": [
+  {
+   "name": "STMT_Q",
+   "op": "WRAP",
+   "sort": "Stmt",
+   "slots": [
+    "Q"
+   ],
+   "print": "{0}",
+   "family": "rows"
+  },
+  {
+   "name": "STMT_V",
+   "op": "WRAP",
+   "sort": "Stmt",
+   "slots": [
+    "V"
+   ],
+   "print": "{0}",
+   "family": "value"
+  },
+  {
+   "name": "STMT_G",
+   "op": "WRAP",
+   "sort": "Stmt",
+   "slots": [
+    "GQ"
+   ],
+   "print": "{0}",
+   "family": "groups"
+  },
+  {
+   "name": "TBL_t0",
+   "op": "LEAF",
+   "sort": "Tbl",
+   "slots": [],
+   "print": "t0"
+  },
+  {
+   "name": "TBL_t1",
+   "op": "LEAF",
+   "sort": "Tbl",
+   "slots": [],
+   "print": "t1"
+  },
+  {
+   "name": "TBL_t2",
+   "op": "LEAF",
+   "sort": "Tbl",
+   "slots": [],
+   "print": "t2"
+  },
+  {
+   "name": "COL_ac0",
+   "op": "LEAF",
+   "sort": "ColAi",
+   "slots": [],
+   "print": "a.c0"
+  },
+  {
+   "name": "COL_ac1",
+   "op": "LEAF",
+   "sort": "ColAi",
+   "slots": [],
+   "print": "a.c1"
+  },
+  {
+   "name": "COL_ac2",
+   "op": "LEAF",
+   "sort": "ColAs",
+   "slots": [],
+   "print": "a.c2"
+  },
+  {
+   "name": "COL_bc0",
+   "op": "LEAF",
+   "sort": "ColBi",
+   "slots": [],
+   "print": "b.c0"
+  },
+  {
+   "name": "COL_bc1",
+   "op": "LEAF",
+   "sort": "ColBi",
+   "slots": [],
+   "print": "b.c1"
+  },
+  {
+   "name": "COL_bc2",
+   "op": "LEAF",
+   "sort": "ColBs",
+   "slots": [],
+   "print": "b.c2"
+  },
+  {
+   "name": "K_INT",
+   "op": "CONST",
+   "sort": "KInt",
+   "slots": [],
+   "print": "{k}",
+   "domain": "int"
+  },
+  {
+   "name": "K_STR",
+   "op": "CONST",
+   "sort": "KStr",
+   "slots": [],
+   "print": "{k}",
+   "domain": "str"
+  },
+  {
+   "name": "K_POS",
+   "op": "CONST",
+   "sort": "KPos",
+   "slots": [],
+   "print": "{k}",
+   "domain": "pos"
+  },
+  {
+   "name": "TBL",
+   "op": "TBL",
+   "sort": "Q",
+   "slots": [
+    "Tbl"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM {0} AS a"
+  },
+  {
+   "name": "SEL",
+   "op": "SEL",
+   "sort": "Q",
+   "slots": [
+    "Tbl",
+    "CA"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM {0} AS a WHERE {1}"
+  },
+  {
+   "name": "SELD",
+   "op": "SELD",
+   "sort": "Q",
+   "slots": [
+    "Tbl",
+    "CA"
+   ],
+   "print": "SELECT DISTINCT a.c0, a.c1, a.c2 FROM {0} AS a WHERE {1}"
+  },
+  {
+   "name": "DSEL",
+   "op": "DSEL",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "CA"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM ({0}) AS a WHERE {1}"
+  },
+  {
+   "name": "DSELD",
+   "op": "DSELD",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "CA"
+   ],
+   "print": "SELECT DISTINCT a.c0, a.c1, a.c2 FROM ({0}) AS a WHERE {1}"
+  },
+  {
+   "name": "JSEL_INNER",
+   "op": "JSEL_INNER",
+   "sort": "Q",
+   "slots": [
+    "Tbl",
+    "Tbl",
+    "CAB",
+    "CAB"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM {0} AS a INNER JOIN {1} AS b ON {2} WHERE {3}"
+  },
+  {
+   "name": "JDSEL_INNER",
+   "op": "JDSEL_INNER",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q",
+    "CAB",
+    "CAB"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM ({0}) AS a INNER JOIN ({1}) AS b ON {2} WHERE {3}"
+  },
+  {
+   "name": "JSEL_LEFT",
+   "op": "JSEL_LEFT",
+   "sort": "Q",
+   "slots": [
+    "Tbl",
+    "Tbl",
+    "CAB",
+    "CAB"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM {0} AS a LEFT JOIN {1} AS b ON {2} WHERE {3}"
+  },
+  {
+   "name": "JDSEL_LEFT",
+   "op": "JDSEL_LEFT",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q",
+    "CAB",
+    "CAB"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM ({0}) AS a LEFT JOIN ({1}) AS b ON {2} WHERE {3}"
+  },
+  {
+   "name": "JSEL_RIGHT",
+   "op": "JSEL_RIGHT",
+   "sort": "Q",
+   "slots": [
+    "Tbl",
+    "Tbl",
+    "CAB",
+    "CAB"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM {0} AS a RIGHT JOIN {1} AS b ON {2} WHERE {3}"
+  },
+  {
+   "name": "JDSEL_RIGHT",
+   "op": "JDSEL_RIGHT",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q",
+    "CAB",
+    "CAB"
+   ],
+   "print": "SELECT a.c0, a.c1, a.c2 FROM ({0}) AS a RIGHT JOIN ({1}) AS b ON {2} WHERE {3}"
+  },
+  {
+   "name": "UNION",
+   "op": "UNION",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q"
+   ],
+   "print": "({0}) UNION ({1})"
+  },
+  {
+   "name": "UNION_ALL",
+   "op": "UNION_ALL",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q"
+   ],
+   "print": "({0}) UNION ALL ({1})"
+  },
+  {
+   "name": "INTERSECT",
+   "op": "INTERSECT",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q"
+   ],
+   "print": "({0}) INTERSECT ({1})"
+  },
+  {
+   "name": "INTERSECT_ALL",
+   "op": "INTERSECT_ALL",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q"
+   ],
+   "print": "({0}) INTERSECT ALL ({1})"
+  },
+  {
+   "name": "EXCEPT",
+   "op": "EXCEPT",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q"
+   ],
+   "print": "({0}) EXCEPT ({1})"
+  },
+  {
+   "name": "EXCEPT_ALL",
+   "op": "EXCEPT_ALL",
+   "sort": "Q",
+   "slots": [
+    "Q",
+    "Q"
+   ],
+   "print": "({0}) EXCEPT ALL ({1})"
+  },
+  {
+   "name": "TRUE_CA",
+   "op": "TRUE",
+   "sort": "CA",
+   "slots": [],
+   "print": "TRUE"
+  },
+  {
+   "name": "FALSE_CA",
+   "op": "FALSE",
+   "sort": "CA",
+   "slots": [],
+   "print": "FALSE"
+  },
+  {
+   "name": "AND_CA",
+   "op": "AND",
+   "sort": "CA",
+   "slots": [
+    "CA",
+    "CA"
+   ],
+   "print": "({0}) AND ({1})"
+  },
+  {
+   "name": "OR_CA",
+   "op": "OR",
+   "sort": "CA",
+   "slots": [
+    "CA",
+    "CA"
+   ],
+   "print": "({0}) OR ({1})"
+  },
+  {
+   "name": "NOT_CA",
+   "op": "NOT",
+   "sort": "CA",
+   "slots": [
+    "CA"
+   ],
+   "print": "NOT ({0})"
+  },
+  {
+   "name": "TRUE_CAB",
+   "op": "TRUE",
+   "sort": "CAB",
+   "slots": [],
+   "print": "TRUE"
+  },
+  {
+   "name": "FALSE_CAB",
+   "op": "FALSE",
+   "sort": "CAB",
+   "slots": [],
+   "print": "FALSE"
+  },
+  {
+   "name": "AND_CAB",
+   "op": "AND",
+   "sort": "CAB",
+   "slots": [
+    "CAB",
+    "CAB"
+   ],
+   "print": "({0}) AND ({1})"
+  },
+  {
+   "name": "OR_CAB",
+   "op": "OR",
+   "sort": "CAB",
+   "slots": [
+    "CAB",
+    "CAB"
+   ],
+   "print": "({0}) OR ({1})"
+  },
+  {
+   "name": "NOT_CAB",
+   "op": "NOT",
+   "sort": "CAB",
+   "slots": [
+    "CAB"
+   ],
+   "print": "NOT ({0})"
+  },
+  {
+   "name": "TRUE_H",
+   "op": "TRUE",
+   "sort": "H",
+   "slots": [],
+   "print": "TRUE"
+  },
+  {
+   "name": "FALSE_H",
+   "op": "FALSE",
+   "sort": "H",
+   "slots": [],
+   "print": "FALSE"
+  },
+  {
+   "name": "AND_H",
+   "op": "AND",
+   "sort": "H",
+   "slots": [
+    "H",
+    "H"
+   ],
+   "print": "({0}) AND ({1})"
+  },
+  {
+   "name": "OR_H",
+   "op": "OR",
+   "sort": "H",
+   "slots": [
+    "H",
+    "H"
+   ],
+   "print": "({0}) OR ({1})"
+  },
+  {
+   "name": "NOT_H",
+   "op": "NOT",
+   "sort": "H",
+   "slots": [
+    "H"
+   ],
+   "print": "NOT ({0})"
+  },
+  {
+   "name": "CMP_CA_A_<",
+   "op": "<",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} < {1}"
+  },
+  {
+   "name": "CMP_CA_A_<=",
+   "op": "<=",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} <= {1}"
+  },
+  {
+   "name": "CMP_CA_A_=",
+   "op": "=",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} = {1}"
+  },
+  {
+   "name": "CMP_CA_A_>=",
+   "op": ">=",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} >= {1}"
+  },
+  {
+   "name": "CMP_CA_A_>",
+   "op": ">",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} > {1}"
+  },
+  {
+   "name": "CMP_CA_A_<>",
+   "op": "<>",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} <> {1}"
+  },
+  {
+   "name": "CMP_CA_AA_<",
+   "op": "<",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "ColAi"
+   ],
+   "print": "{0} < {1}"
+  },
+  {
+   "name": "CMP_CA_AA_<=",
+   "op": "<=",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "ColAi"
+   ],
+   "print": "{0} <= {1}"
+  },
+  {
+   "name": "CMP_CA_AA_=",
+   "op": "=",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "ColAi"
+   ],
+   "print": "{0} = {1}"
+  },
+  {
+   "name": "CMP_CA_AA_>=",
+   "op": ">=",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "ColAi"
+   ],
+   "print": "{0} >= {1}"
+  },
+  {
+   "name": "CMP_CA_AA_>",
+   "op": ">",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "ColAi"
+   ],
+   "print": "{0} > {1}"
+  },
+  {
+   "name": "CMP_CA_AA_<>",
+   "op": "<>",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "ColAi"
+   ],
+   "print": "{0} <> {1}"
+  },
+  {
+   "name": "CMP_CAB_A_<",
+   "op": "<",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} < {1}"
+  },
+  {
+   "name": "CMP_CAB_A_<=",
+   "op": "<=",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} <= {1}"
+  },
+  {
+   "name": "CMP_CAB_A_=",
+   "op": "=",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} = {1}"
+  },
+  {
+   "name": "CMP_CAB_A_>=",
+   "op": ">=",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} >= {1}"
+  },
+  {
+   "name": "CMP_CAB_A_>",
+   "op": ">",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} > {1}"
+  },
+  {
+   "name": "CMP_CAB_A_<>",
+   "op": "<>",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "KInt"
+   ],
+   "print": "{0} <> {1}"
+  },
+  {
+   "name": "CMP_CAB_B_<",
+   "op": "<",
+   "sort": "CAB",
+   "slots": [
+    "ColBi",
+    "KInt"
+   ],
+   "print": "{0} < {1}"
+  },
+  {
+   "name": "CMP_CAB_B_<=",
+   "op": "<=",
+   "sort": "CAB",
+   "slots": [
+    "ColBi",
+    "KInt"
+   ],
+   "print": "{0} <= {1}"
+  },
+  {
+   "name": "CMP_CAB_B_=",
+   "op": "=",
+   "sort": "CAB",
+   "slots": [
+    "ColBi",
+    "KInt"
+   ],
+   "print": "{0} = {1}"
+  },
+  {
+   "name": "CMP_CAB_B_>=",
+   "op": ">=",
+   "sort": "CAB",
+   "slots": [
+    "ColBi",
+    "KInt"
+   ],
+   "print": "{0} >= {1}"
+  },
+  {
+   "name": "CMP_CAB_B_>",
+   "op": ">",
+   "sort": "CAB",
+   "slots": [
+    "ColBi",
+    "KInt"
+   ],
+   "print": "{0} > {1}"
+  },
+  {
+   "name": "CMP_CAB_B_<>",
+   "op": "<>",
+   "sort": "CAB",
+   "slots": [
+    "ColBi",
+    "KInt"
+   ],
+   "print": "{0} <> {1}"
+  },
+  {
+   "name": "CMP_CAB_AB_<",
+   "op": "<",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "ColBi"
+   ],
+   "print": "{0} < {1}"
+  },
+  {
+   "name": "CMP_CAB_AB_<=",
+   "op": "<=",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "ColBi"
+   ],
+   "print": "{0} <= {1}"
+  },
+  {
+   "name": "CMP_CAB_AB_=",
+   "op": "=",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "ColBi"
+   ],
+   "print": "{0} = {1}"
+  },
+  {
+   "name": "CMP_CAB_AB_>=",
+   "op": ">=",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "ColBi"
+   ],
+   "print": "{0} >= {1}"
+  },
+  {
+   "name": "CMP_CAB_AB_>",
+   "op": ">",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "ColBi"
+   ],
+   "print": "{0} > {1}"
+  },
+  {
+   "name": "CMP_CAB_AB_<>",
+   "op": "<>",
+   "sort": "CAB",
+   "slots": [
+    "ColAi",
+    "ColBi"
+   ],
+   "print": "{0} <> {1}"
+  },
+  {
+   "name": "CMP_H_G_<",
+   "op": "<",
+   "sort": "H",
+   "slots": [
+    "GAgg",
+    "KInt"
+   ],
+   "print": "{0} < {1}"
+  },
+  {
+   "name": "CMP_H_G_<=",
+   "op": "<=",
+   "sort": "H",
+   "slots": [
+    "GAgg",
+    "KInt"
+   ],
+   "print": "{0} <= {1}"
+  },
+  {
+   "name": "CMP_H_G_=",
+   "op": "=",
+   "sort": "H",
+   "slots": [
+    "GAgg",
+    "KInt"
+   ],
+   "print": "{0} = {1}"
+  },
+  {
+   "name": "CMP_H_G_>=",
+   "op": ">=",
+   "sort": "H",
+   "slots": [
+    "GAgg",
+    "KInt"
+   ],
+   "print": "{0} >= {1}"
+  },
+  {
+   "name": "CMP_H_G_>",
+   "op": ">",
+   "sort": "H",
+   "slots": [
+    "GAgg",
+    "KInt"
+   ],
+   "print": "{0} > {1}"
+  },
+  {
+   "name": "CMP_H_G_<>",
+   "op": "<>",
+   "sort": "H",
+   "slots": [
+    "GAgg",
+    "KInt"
+   ],
+   "print": "{0} <> {1}"
+  },
+  {
+   "name": "CMPS_CA_EQ",
+   "op": "CMPS_EQ",
+   "sort": "CA",
+   "slots": [
+    "ColAs",
+    "KStr"
+   ],
+   "print": "{0} = {1}"
+  },
+  {
+   "name": "CMPS_CA_NE",
+   "op": "CMPS_NE",
+   "sort": "CA",
+   "slots": [
+    "ColAs",
+    "KStr"
+   ],
+   "print": "{0} <> {1}"
+  },
+  {
+   "name": "CMPS_CAB_EQ",
+   "op": "CMPS_EQ",
+   "sort": "CAB",
+   "slots": [
+    "ColBs",
+    "KStr"
+   ],
+   "print": "{0} = {1}"
+  },
+  {
+   "name": "CMPS_CAB_NE",
+   "op": "CMPS_NE",
+   "sort": "CAB",
+   "slots": [
+    "ColBs",
+    "KStr"
+   ],
+   "print": "{0} <> {1}"
+  },
+  {
+   "name": "BETW_CA",
+   "op": "BETWEEN",
+   "sort": "CA",
+   "slots": [
+    "ColAi",
+    "KInt",
+    "KInt"
+   ],
+   "print": "{0} BETWEEN {1} AND {2}"
+  },
+  {
+   "name": "ISNULL_CA",
+   "op": "ISNULL",
+   "sort": "CA",
+   "slots": [
+    "ColAi"
+   ],
+   "print": "{0} IS NULL"
+  },
+  {
+   "name": "ISNOTNULL_CA",
+   "op": "ISNOTNULL",
+   "sort": "CA",
+   "slots": [
+    "ColAi"
+   ],
+   "print": "{0} IS NOT NULL"
+  },
+  {
+   "name": "BETW_CAB",
+   "op": "BETWEEN",
+   "sort": "CAB",
+   "slots": [
+    "ColBi",
+    "KInt",
+    "KInt"
+   ],
+   "print": "{0} BETWEEN {1} AND {2}"
+  },
+  {
+   "name": "ISNULL_CAB",
+   "op": "ISNULL",
+   "sort": "CAB",
+   "slots": [
+    "ColBi"
+   ],
+   "print": "{0} IS NULL"
+  },
+  {
+   "name": "ISNOTNULL_CAB",
+   "op": "ISNOTNULL",
+   "sort": "CAB",
+   "slots": [
+    "ColBi"
+   ],
+   "print": "{0} IS NOT NULL"
+  },
+  {
+   "name": "EXISTS_CA",
+   "op": "EXISTS",
+   "sort": "CA",
+   "slots": [
+    "Tbl",
+    "CAB"
+   ],
+   "print": "EXISTS (SELECT 1 FROM {0} AS b WHERE {1})"
+  },
+  {
+   "name": "G_MIN",
+   "op": "G_MIN",
+   "sort": "GAgg",
+   "slots": [],
+   "print": "MIN(a.c0)"
+  },
+  {
+   "name": "G_AVG",
+   "op": "G_AVG",
+   "sort": "GAgg",
+   "slots": [],
+   "print": "AVG(a.c0)"
+  },
+  {
+   "name": "G_MAX",
+   "op": "G_MAX",
+   "sort": "GAgg",
+   "slots": [],
+   "print": "MAX(a.c0)"
+  },
+  {
+   "name": "G_SUM",
+   "op": "G_SUM",
+   "sort": "GAgg",
+   "slots": [],
+   "print": "SUM(a.c0)"
+  },
+  {
+   "name": "G_CNT",
+   "op": "G_CNT",
+   "sort": "GAgg",
+   "slots": [],
+   "print": "COUNT(a.c0)"
+  },
+  {
+   "name": "G_CNTD",
+   "op": "G_CNTD",
+   "sort": "GAgg",
+   "slots": [],
+   "print": "COUNT(DISTINCT a.c0)"
+  },
+  {
+   "name": "G_CNTS",
+   "op": "G_CNTS",
+   "sort": "GAgg",
+   "slots": [],
+   "print": "COUNT(*)"
+  },
+  {
+   "name": "GSEL",
+   "op": "GSEL",
+   "sort": "GQ",
+   "slots": [
+    "Q",
+    "H"
+   ],
+   "print": "SELECT a.c1, COUNT(*) FROM ({0}) AS a GROUP BY a.c1 HAVING {1}"
+  },
+  {
+   "name": "AGG_MIN",
+   "op": "AGG_MIN",
+   "sort": "V",
+   "slots": [
+    "Q"
+   ],
+   "print": "MIN(a.c0)",
+   "agg": true
+  },
+  {
+   "name": "AGG_AVG",
+   "op": "AGG_AVG",
+   "sort": "V",
+   "slots": [
+    "Q"
+   ],
+   "print": "AVG(a.c0)",
+   "agg": true
+  },
+  {
+   "name": "AGG_MAX",
+   "op": "AGG_MAX",
+   "sort": "V",
+   "slots": [
+    "Q"
+   ],
+   "print": "MAX(a.c0)",
+   "agg": true
+  },
+  {
+   "name": "AGG_SUM",
+   "op": "AGG_SUM",
+   "sort": "V",
+   "slots": [
+    "Q"
+   ],
+   "print": "SUM(a.c0)",
+   "agg": true
+  },
+  {
+   "name": "AGG_CNT",
+   "op": "AGG_CNT",
+   "sort": "V",
+   "slots": [
+    "Q"
+   ],
+   "print": "COUNT(a.c0)",
+   "agg": true
+  },
+  {
+   "name": "AGG_CNTD",
+   "op": "AGG_CNTD",
+   "sort": "V",
+   "slots": [
+    "Q"
+   ],
+   "print": "COUNT(DISTINCT a.c0)",
+   "agg": true
+  },
+  {
+   "name": "AGG_CNTS",
+   "op": "AGG_CNTS",
+   "sort": "V",
+   "slots": [
+    "Q"
+   ],
+   "print": "COUNT(*)",
+   "agg": true
+  },
+  {
+   "name": "PLUS",
+   "op": "PLUS",
+   "sort": "V",
+   "slots": [
+    "V",
+    "KPos"
+   ],
+   "print": "{0} + {1}"
+  }
+ ]
+}

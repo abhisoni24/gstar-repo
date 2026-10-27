@@ -1,0 +1,60 @@
+{
+ "n_per_arm": 10000,
+ "n_dbs": 10,
+ "depth": 6,
+ "seed": 23,
+ "arms": {
+  "G*": {
+   "pairs": 10000,
+   "grammar_rules": 4294,
+   "tries": 15932,
+   "rejected": {
+    "duplicate": 5672,
+    "identical text": 260
+   },
+   "by_family_label": {
+    "groups =": 1117,
+    "rows ↑": 1317,
+    "rows ↓": 1372,
+    "groups ↑": 1044,
+    "value =": 985,
+    "value ↓": 934,
+    "rows =": 1232,
+    "groups ↓": 1027,
+    "value ↑": 972
+   }
+  },
+  "G*_V": {
+   "pairs": 10000,
+   "grammar_rules": 334,
+   "tries": 22682,
+   "rejected": {
+    "outside the arm": 2150,
+    "duplicate": 10220,
+    "identical text": 312
+   },
+   "by_family_label": {
+    "groups ↑": 1840,
+    "rows ↓": 1716,
+    "rows ↑": 1639,
+    "groups ↓": 1870,
+    "value ↑": 1521,
+    "value ↓": 1414
+   }
+  },
+  "G*_P": {
+   "pairs": 10000,
+   "grammar_rules": 420,
+   "tries": 101321,
+   "rejected": {
+    "outside the arm": 50563,
+    "duplicate": 40636,
+    "identical text": 122
+   },
+   "by_family_label": {
+    "rows ↑": 5000,
+    "rows ↓": 5000
+   }
+  }
+ }
+}

@@ -1,0 +1,274 @@
+Sampled triples (Q, Q′, metRel) from G* for tinyq, evaluated on the People table of Figure 1.
+Each derivation lists the G* rules used, top-down; indentation shows the depth.
+
+#1  start Query[↑]  so metRel(Q, Q′) is ⊆
+  derivation:
+    Query[↑] → x WHERE (c AND d)  ⇒  (x WHERE c) WHERE d     [law; law L5 (filter merge)]
+      Query[↑] → (x WHERE c) EXCEPT y  ⇒  (x EXCEPT y) WHERE c     [law; law L9 (filter through difference)]
+        Query[=] → (x EXCEPT y) EXCEPT z  ⇒  x EXCEPT (y UNION z)     [law; law L8 (difference of a union)]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Cond[↑] → x1 < x2  ⇒  x1 ≤ x2     [swap; order: < ≼ ≤]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[↑] → k  ⇒  k′   with k′ > k     [constant; domain order of age: k′ > k]
+        Query[↓] → x1 UNION z  ⇒  x1     [drop; identity: ∅ is the least value of slot β of UNION, sign +]
+          Query[id] → People     [copy; copy People]
+      Cond[↑] → NOT (x AND y)  ⇒  (NOT x) OR (NOT y)     [law; law L4 (De Morgan)]
+        Cond[↓] → NOT (a > k)  ⇒  a ≤ k     [law; law L10 (negated comparison)]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[↓] → k  ⇒  k′   with k′ < k     [constant; domain order of age: k′ < k]
+        Cond[=] → a = k  ⇒  NOT (a ≠ k)     [law; law L10 (negated comparison)]
+          Col.city[id] → city     [copy; copy col:city]
+          Const.city[id] → k     [copy; same constant on both sides]
+      Cond[=] → x AND y  ⇒  y AND x     [law; law L1 (commutativity)]
+        Cond[id] → x1 = x2     [copy; copy =]
+          Col.name[id] → name     [copy; copy col:name]
+          Const.name[id] → k     [copy; same constant on both sides]
+        Cond[id] → x1 ≠ x2     [copy; copy ≠]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[id] → k     [copy; same constant on both sides]
+  Q  = ((((People EXCEPT People) EXCEPT People) WHERE age < 12) EXCEPT (People UNION People)) WHERE NOT (NOT (age > 58) AND city = 'Chicago') AND (name = 'Ann' AND age ≠ 75)
+  Q′ = ((((People EXCEPT (People UNION People)) EXCEPT People) WHERE age ≤ 70) WHERE NOT (age ≤ 41) OR NOT (NOT (city ≠ 'Chicago'))) WHERE age ≠ 75 AND name = 'Ann'
+  on Figure 1:  Q → (none);  Q′ → (none)
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM People) WHERE age < 12) EXCEPT SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) WHERE ((NOT ((NOT age > 58) AND city = 'Chicago')) AND (name = 'Ann' AND age <> 75))
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) EXCEPT SELECT * FROM People) WHERE age <= 70) WHERE ((NOT age <= 41) OR (NOT (NOT city <> 'Chicago')))) WHERE (age <> 75 AND name = 'Ann')
+
+#2  start Query[↑]  so metRel(Q, Q′) is ⊆
+  derivation:
+    Query[↑] → (x WHERE c) EXCEPT y  ⇒  (x EXCEPT y) WHERE c     [law; law L9 (filter through difference)]
+      Query[id] → x1 WHERE x2     [copy; copy WHERE]
+        Query[id] → x1 EXCEPT x2     [copy; copy EXCEPT]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Cond[id] → x1 ≠ x2     [copy; copy ≠]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[id] → k     [copy; same constant on both sides]
+      Cond[↑] → (x AND y) AND z  ⇒  x AND (y AND z)     [law; law L2 (associativity)]
+        Cond[↑] → x1 > x2  ⇒  x1 ≠ x2     [swap; order: > ≼ ≠]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[id] → k     [copy; same constant on both sides]
+        Cond[=] → a ≤ k  ⇒  NOT (a > k)     [law; law L10 (negated comparison)]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[id] → k     [copy; same constant on both sides]
+        Cond[↑] → NOT (a ≤ k)  ⇒  a > k     [law; law L10 (negated comparison)]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[↓] → k  ⇒  k′   with k′ < k     [constant; domain order of age: k′ < k]
+      Query[=] → x WHERE (c AND d)  ⇒  (x WHERE c) WHERE d     [law; law L5 (filter merge)]
+        Query[id] → x1 UNION x2     [copy; copy UNION]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Cond[id] → x1 = x2     [copy; copy =]
+          Col.name[id] → name     [copy; copy col:name]
+          Const.name[id] → k     [copy; same constant on both sides]
+        Cond[id] → x1 ≠ x2     [copy; copy ≠]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[id] → k     [copy; same constant on both sides]
+  Q  = (((People EXCEPT People) WHERE age ≠ 58) WHERE (age > 40 AND age ≤ 8) AND NOT (age ≤ 14)) EXCEPT ((People UNION People) WHERE name = 'Ann' AND age ≠ 53)
+  Q′ = (((People EXCEPT People) WHERE age ≠ 58) EXCEPT (((People UNION People) WHERE name = 'Ann') WHERE age ≠ 53)) WHERE age ≠ 40 AND (NOT (age > 8) AND age > 13)
+  on Figure 1:  Q → (none);  Q′ → (none)
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) WHERE age <> 58) WHERE ((age > 40 AND age <= 8) AND (NOT age <= 14))) EXCEPT SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) WHERE (name = 'Ann' AND age <> 53))
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) WHERE age <> 58) EXCEPT SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) WHERE name = 'Ann') WHERE age <> 53)) WHERE (age <> 40 AND ((NOT age > 8) AND age > 13))
+
+#3  start Query[↑]  so metRel(Q, Q′) is ⊆
+  derivation:
+    Query[↑] → x1 EXCEPT x2  ⇒  x1 UNION x2     [swap; order: EXCEPT ≼ UNION]
+      Query[=] → x EXCEPT (y UNION z)  ⇒  (x EXCEPT y) EXCEPT z     [law; law L8 (difference of a union)]
+        Query[id] → x1 EXCEPT x2     [copy; copy EXCEPT]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Query[=] → x UNION (y UNION z)  ⇒  (x UNION y) UNION z     [law; law L2 (associativity)]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Query[=] → x UNION y  ⇒  y UNION x     [law; law L1 (commutativity)]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+      Query[id] → x1 WHERE x2     [copy; copy WHERE]
+        Query[id] → People     [copy; copy People]
+        Cond[id] → x1 ≠ x2     [copy; copy ≠]
+          Col.name[id] → name     [copy; copy col:name]
+          Const.name[id] → k     [copy; same constant on both sides]
+  Q  = ((People EXCEPT People) EXCEPT ((People UNION (People UNION People)) UNION (People UNION People))) EXCEPT (People WHERE name ≠ 'Jon')
+  Q′ = (((People EXCEPT People) EXCEPT ((People UNION People) UNION People)) EXCEPT (People UNION People)) UNION (People WHERE name ≠ 'Jon')
+  on Figure 1:  Q → (none);  Q′ → Ann, Bob, Cal, Dee, Fay
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People))) EXCEPT SELECT * FROM (SELECT * FROM People WHERE name <> 'Jon')
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) UNION SELECT * FROM People)) EXCEPT SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) UNION SELECT * FROM (SELECT * FROM People WHERE name <> 'Jon')
+
+#4  start Query[↑]  so metRel(Q, Q′) is ⊆
+  derivation:
+    Query[↑] → (x EXCEPT y) WHERE c  ⇒  (x WHERE c) EXCEPT y     [law; law L9 (filter through difference)]
+      Query[↑] → x1 EXCEPT z  ⇒  x1     [drop; identity: ∅ is the least value of slot β of EXCEPT, sign −]
+        Query[id] → People     [copy; copy People]
+      Query[id] → x1 UNION x2     [copy; copy UNION]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+      Cond[=] → a ≠ k  ⇒  NOT (a = k)     [law; law L10 (negated comparison)]
+        Col.city[id] → city     [copy; copy col:city]
+        Const.city[id] → k     [copy; same constant on both sides]
+  Q  = ((People EXCEPT People) EXCEPT (People UNION People)) WHERE city ≠ 'Denver'
+  Q′ = (People WHERE NOT (city = 'Denver')) EXCEPT (People UNION People)
+  on Figure 1:  Q → (none);  Q′ → (none)
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) WHERE city <> 'Denver'
+  SQL Q′: SELECT * FROM (SELECT * FROM People WHERE (NOT city = 'Denver')) EXCEPT SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)
+
+#5  start Query[↓]  so metRel(Q, Q′) is ⊇
+  derivation:
+    Query[↓] → x WHERE (c AND d)  ⇒  (x WHERE c) WHERE d     [law; law L5 (filter merge)]
+      Query[=] → (x UNION y) UNION z  ⇒  x UNION (y UNION z)     [law; law L2 (associativity)]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+      Cond[↓] → x1 < x2     [copy; copy <]
+        Col.age[id] → age     [copy; copy col:age]
+        Const.age[↓] → k  ⇒  k′   with k′ < k     [constant; domain order of age: k′ < k]
+      Cond[↓] → NOT (a > k)  ⇒  a ≤ k     [law; law L10 (negated comparison)]
+        Col.age[id] → age     [copy; copy col:age]
+        Const.age[↓] → k  ⇒  k′   with k′ < k     [constant; domain order of age: k′ < k]
+  Q  = ((People UNION People) UNION People) WHERE age < 51 AND NOT (age > 19)
+  Q′ = ((People UNION (People UNION People)) WHERE age < 38) WHERE age ≤ 6
+  on Figure 1:  Q → Bob;  Q′ → (none)
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) UNION SELECT * FROM People) WHERE (age < 51 AND (NOT age > 19))
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) WHERE age < 38) WHERE age <= 6
+
+#6  start Query[↓]  so metRel(Q, Q′) is ⊇
+  derivation:
+    Query[↓] → x WHERE (c AND d)  ⇒  (x WHERE c) WHERE d     [law; law L5 (filter merge)]
+      Query[↓] → x UNION (y UNION z)  ⇒  (x UNION y) UNION z     [law; law L2 (associativity)]
+        Query[=] → x UNION y  ⇒  y UNION x     [law; law L1 (commutativity)]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Query[=] → (x EXCEPT y) EXCEPT z  ⇒  (x EXCEPT z) EXCEPT y     [law; law L7 (difference swap)]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Query[↓] → z UNION x1  ⇒  x1     [drop; identity: ∅ is the least value of slot α of UNION, sign +]
+          Query[id] → People     [copy; copy People]
+      Cond[=] → a ≠ k  ⇒  NOT (a = k)     [law; law L10 (negated comparison)]
+        Col.name[id] → name     [copy; copy col:name]
+        Const.name[id] → k     [copy; same constant on both sides]
+      Cond[↓] → x1 ≠ x2  ⇒  x1 > x2     [swap; order: > ≼ ≠]
+        Col.age[id] → age     [copy; copy col:age]
+        Const.age[id] → k     [copy; same constant on both sides]
+  Q  = ((People UNION People) UNION (((People EXCEPT People) EXCEPT People) UNION (People UNION People))) WHERE name ≠ 'Jon' AND age ≠ 49
+  Q′ = ((((People UNION People) UNION ((People EXCEPT People) EXCEPT People)) UNION People) WHERE NOT (name = 'Jon')) WHERE age > 49
+  on Figure 1:  Q → Ann, Bob, Cal, Dee, Fay;  Q′ → Fay
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) UNION SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM People) UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People))) WHERE (name <> 'Jon' AND age <> 49)
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) UNION SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM People)) UNION SELECT * FROM People) WHERE (NOT name = 'Jon')) WHERE age > 49
+
+#7  start Query[↓]  so metRel(Q, Q′) is ⊇
+  derivation:
+    Query[↓] → (x UNION y) UNION z  ⇒  x UNION (y UNION z)     [law; law L2 (associativity)]
+      Query[=] → x EXCEPT (y UNION z)  ⇒  (x EXCEPT y) EXCEPT z     [law; law L8 (difference of a union)]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+      Query[id] → x1 EXCEPT x2     [copy; copy EXCEPT]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+      Query[↓] → z UNION x1  ⇒  x1     [drop; identity: ∅ is the least value of slot α of UNION, sign +]
+        Query[id] → People     [copy; copy People]
+  Q  = ((People EXCEPT (People UNION People)) UNION (People EXCEPT People)) UNION (People UNION People)
+  Q′ = ((People EXCEPT People) EXCEPT People) UNION ((People EXCEPT People) UNION People)
+  on Figure 1:  Q → Ann, Bob, Cal, Dee, Fay;  Q′ → Ann, Bob, Cal, Dee, Fay
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) UNION SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People)) UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM People) UNION SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) UNION SELECT * FROM People)
+
+#8  start Query[↓]  so metRel(Q, Q′) is ⊇
+  derivation:
+    Query[↓] → (x WHERE c) EXCEPT y  ⇒  (x EXCEPT y) WHERE c     [law; law L9 (filter through difference)]
+      Query[↓] → x1  ⇒  x1 EXCEPT z     [insert; identity: ∅ is the least value of slot β of EXCEPT, sign −]
+        Query[id] → People     [copy; copy People]
+      Cond[=] → a ≥ k  ⇒  NOT (a < k)     [law; law L10 (negated comparison)]
+        Col.age[id] → age     [copy; copy col:age]
+        Const.age[id] → k     [copy; same constant on both sides]
+      Query[id] → x1 EXCEPT x2     [copy; copy EXCEPT]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+  Q  = (People WHERE age ≥ 4) EXCEPT (People EXCEPT People)
+  Q′ = ((People EXCEPT People) EXCEPT (People EXCEPT People)) WHERE NOT (age < 4)
+  on Figure 1:  Q → Ann, Bob, Cal, Dee, Fay;  Q′ → (none)
+  SQL Q : SELECT * FROM (SELECT * FROM People WHERE age >= 4) EXCEPT SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People)
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People)) WHERE (NOT age < 4)
+
+#9  start Query[=]  so metRel(Q, Q′) is =
+  derivation:
+    Query[=] → (x WHERE c) EXCEPT y  ⇒  (x EXCEPT y) WHERE c     [law; law L9 (filter through difference)]
+      Query[=] → (x WHERE c) WHERE d  ⇒  (x WHERE d) WHERE c     [law; law L6 (filter swap)]
+        Query[=] → x UNION (y UNION z)  ⇒  (x UNION y) UNION z     [law; law L2 (associativity)]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Cond[id] → x1 = x2     [copy; copy =]
+          Col.city[id] → city     [copy; copy col:city]
+          Const.city[id] → k     [copy; same constant on both sides]
+        Cond[=] → a ≤ k  ⇒  NOT (a > k)     [law; law L10 (negated comparison)]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[id] → k     [copy; same constant on both sides]
+      Cond[id] → x1 = x2     [copy; copy =]
+        Col.name[id] → name     [copy; copy col:name]
+        Const.name[id] → k     [copy; same constant on both sides]
+      Query[=] → (x WHERE c) WHERE d  ⇒  x WHERE (c AND d)     [law; law L5 (filter merge)]
+        Query[=] → (x EXCEPT y) EXCEPT z  ⇒  (x EXCEPT z) EXCEPT y     [law; law L7 (difference swap)]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Cond[id] → x1 = x2     [copy; copy =]
+          Col.name[id] → name     [copy; copy col:name]
+          Const.name[id] → k     [copy; same constant on both sides]
+        Cond[=] → NOT (a ≠ k)  ⇒  a = k     [law; law L10 (negated comparison)]
+          Col.age[id] → age     [copy; copy col:age]
+          Const.age[id] → k     [copy; same constant on both sides]
+  Q  = ((((People UNION (People UNION People)) WHERE city = 'Madison') WHERE age ≤ 35) WHERE name = 'Bob') EXCEPT ((((People EXCEPT People) EXCEPT People) WHERE name = 'Gus') WHERE NOT (age ≠ 46))
+  Q′ = (((((People UNION People) UNION People) WHERE NOT (age > 35)) WHERE city = 'Madison') EXCEPT (((People EXCEPT People) EXCEPT People) WHERE name = 'Gus' AND age = 46)) WHERE name = 'Bob'
+  on Figure 1:  Q → (none);  Q′ → (none)
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) WHERE city = 'Madison') WHERE age <= 35) WHERE name = 'Bob') EXCEPT SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM People) WHERE name = 'Gus') WHERE (NOT age <> 46))
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) UNION SELECT * FROM People) WHERE (NOT age > 35)) WHERE city = 'Madison') EXCEPT SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM People) WHERE (name = 'Gus' AND age = 46))) WHERE name = 'Bob'
+
+#10  start Query[=]  so metRel(Q, Q′) is =
+  derivation:
+    Query[=] → (x UNION y) UNION z  ⇒  x UNION (y UNION z)     [law; law L2 (associativity)]
+      Query[=] → (x EXCEPT y) EXCEPT z  ⇒  (x EXCEPT z) EXCEPT y     [law; law L7 (difference swap)]
+        Query[=] → x UNION (y UNION z)  ⇒  (x UNION y) UNION z     [law; law L2 (associativity)]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Query[id] → x1 UNION x2     [copy; copy UNION]
+          Query[id] → People     [copy; copy People]
+          Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+      Query[id] → People     [copy; copy People]
+      Query[id] → People     [copy; copy People]
+  Q  = ((((People UNION (People UNION People)) EXCEPT (People UNION People)) EXCEPT People) UNION People) UNION People
+  Q′ = ((((People UNION People) UNION People) EXCEPT People) EXCEPT (People UNION People)) UNION (People UNION People)
+  on Figure 1:  Q → Ann, Bob, Cal, Dee, Fay;  Q′ → Ann, Bob, Cal, Dee, Fay
+  SQL Q : SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) EXCEPT SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) EXCEPT SELECT * FROM People) UNION SELECT * FROM People) UNION SELECT * FROM People
+  SQL Q′: SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) UNION SELECT * FROM People) EXCEPT SELECT * FROM People) EXCEPT SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)) UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)
+
+#11  start Query[=]  so metRel(Q, Q′) is =
+  derivation:
+    Query[=] → (x EXCEPT y) EXCEPT z  ⇒  x EXCEPT (y UNION z)     [law; law L8 (difference of a union)]
+      Query[id] → People     [copy; copy People]
+      Query[id] → x1 EXCEPT x2     [copy; copy EXCEPT]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+      Query[id] → People     [copy; copy People]
+  Q  = (People EXCEPT (People EXCEPT People)) EXCEPT People
+  Q′ = People EXCEPT ((People EXCEPT People) UNION People)
+  on Figure 1:  Q → (none);  Q′ → (none)
+  SQL Q : SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People)) EXCEPT SELECT * FROM People
+  SQL Q′: SELECT * FROM People EXCEPT SELECT * FROM (SELECT * FROM (SELECT * FROM People EXCEPT SELECT * FROM People) UNION SELECT * FROM People)
+
+#12  start Query[=]  so metRel(Q, Q′) is =
+  derivation:
+    Query[=] → x UNION y  ⇒  y UNION x     [law; law L1 (commutativity)]
+      Query[id] → People     [copy; copy People]
+      Query[id] → x1 UNION x2     [copy; copy UNION]
+        Query[id] → People     [copy; copy People]
+        Query[id] → People     [copy; copy People]
+  Q  = People UNION (People UNION People)
+  Q′ = (People UNION People) UNION People
+  on Figure 1:  Q → Ann, Bob, Cal, Dee, Fay;  Q′ → Ann, Bob, Cal, Dee, Fay
+  SQL Q : SELECT * FROM People UNION SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People)
+  SQL Q′: SELECT * FROM (SELECT * FROM People UNION SELECT * FROM People) UNION SELECT * FROM People
+

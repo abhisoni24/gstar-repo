@@ -1,0 +1,189 @@
+{
+ "engines": {
+  "duckdb": "2.0.0",
+  "mysql-26.7.0": "26.7.0",
+  "mysql-8.0.46": "8.0.46",
+  "mysql-8.4.13": "8.4.13",
+  "mysql-9.4.0": "9.4.0",
+  "mysql-9.7.2": "9.7.2"
+ },
+ "stats": {
+  "duckdb": {
+   "G*": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0,
+    "engine ≠ reference, MR silent": 1
+   },
+   "G*_V": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0,
+    "engine ≠ reference, MR silent": 1
+   },
+   "G*_P": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   }
+  },
+  "mysql-26.7.0": {
+   "G*": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_V": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_P": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   }
+  },
+  "mysql-8.0.46": {
+   "G*": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_V": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_P": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   }
+  },
+  "mysql-8.4.13": {
+   "G*": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_V": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_P": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   }
+  },
+  "mysql-9.4.0": {
+   "G*": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_V": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_P": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   }
+  },
+  "mysql-9.7.2": {
+   "G*": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_V": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   },
+   "G*_P": {
+    "executed": 100000,
+    "reference violates (T unsound)": 0
+   }
+  }
+ },
+ "arms": {},
+ "distinct_reduced_cases": [
+  {
+   "system": "duckdb",
+   "reduced_sql": "SELECT a.c1, COUNT(*) FROM (SELECT a.c0, a.c1, a.c2 FROM t1 AS a LEFT JOIN t2 AS b ON b.c1 IS NOT NULL WHERE TRUE) AS a GROUP BY a.c1 HAVING SUM(a.c0) > 4",
+   "engines": [
+    "duckdb"
+   ],
+   "flagged_executions_by_arm": {
+    "G*": 1
+   },
+   "distinct_pairs_by_arm": {
+    "G*": 1
+   },
+   "example": {
+    "engine": "duckdb",
+    "db": {
+     "t1": [
+      [
+       -3,
+       5,
+       "c"
+      ],
+      [
+       9,
+       null,
+       "a"
+      ]
+     ],
+     "t2": [
+      [
+       8,
+       null,
+       "a"
+      ]
+     ]
+    },
+    "edits": [
+     "law: (x) AND (((y) AND (z))) ⇒ (((x) AND (y))) AND (z) [H]",
+     "law: x ≠ k ⇒ NOT ((x = k)) [H]"
+    ],
+    "label": "="
+   }
+  },
+  {
+   "system": "duckdb",
+   "reduced_sql": "SELECT a.c1, COUNT(*) FROM (SELECT a.c0, a.c1, a.c2 FROM (SELECT a.c0, a.c1, a.c2 FROM t2 AS a) AS a LEFT JOIN (SELECT a.c0, a.c1, a.c2 FROM t0 AS a) AS b ON b.c0 >= 6 WHERE TRUE) AS a GROUP BY a.c1 HAVING SUM(a.c0) <= 1",
+   "engines": [
+    "duckdb"
+   ],
+   "flagged_executions_by_arm": {
+    "G*_V": 1
+   },
+   "distinct_pairs_by_arm": {
+    "G*_V": 1
+   },
+   "example": {
+    "engine": "duckdb",
+    "db": {
+     "t2": [
+      [
+       -1,
+       3,
+       "a"
+      ],
+      [
+       3,
+       -2,
+       "b"
+      ]
+     ]
+    },
+    "edits": [
+     "constant: k ⇒ k′ [KInt]"
+    ],
+    "label": "↓"
+   }
+  }
+ ],
+ "violating_pairs_by_engine_and_arm": {
+  "duckdb": {},
+  "mysql-26.7.0": {},
+  "mysql-8.0.46": {},
+  "mysql-8.4.13": {},
+  "mysql-9.4.0": {},
+  "mysql-9.7.2": {}
+ },
+ "classes": {
+  "duckdb | G* | wrong result in the engine, MR silent (both sides wrong alike)": 1,
+  "duckdb | G*_V | wrong result in the engine, MR silent (both sides wrong alike)": 1
+ }
+}

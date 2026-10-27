@@ -1,0 +1,12 @@
+{
+  "_comment": "Schema of the database under test. For a graph DBMS, 'tables' would be node labels and 'columns' their properties. 'type' decides which comparisons the grammar offers and whether constants are ordered. 'values' or 'min'/'max' give dom(c), the constants the sampler may use.",
+  "tables": {
+    "People": {
+      "columns": {
+        "name": {"type": "text", "values": ["Ann", "Bob", "Cal", "Dee", "Fay", "Gus", "Ivy", "Jon"]},
+        "age":  {"type": "int",  "min": 0, "max": 80},
+        "city": {"type": "text", "values": ["Chicago", "Madison", "Austin", "Denver"]}
+      }
+    }
+  }
+}

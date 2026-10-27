@@ -1,0 +1,2260 @@
+{
+ "_comment": "T for MySQL 9.x: bags, three-valued logic (FALSE < UNKNOWN < TRUE), NULLs in data. signs: one per slot; identity: greatest / least per slot; bound: f(x, ·) ⊑ x (deflationary) or x ⊑ f(x, ·) (inflationary) for x in that slot; order: codes Ci.j; laws: ids. Written by make_inputs.py.",
+ "operators": {
+  "WRAP": {
+   "signs": [
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": []
+  },
+  "TBL": {
+   "signs": [
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": [
+    "L14",
+    "L15"
+   ]
+  },
+  "SEL": {
+   "signs": [
+    "0",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C1.2"
+   ],
+   "laws": [
+    "L6",
+    "L7",
+    "L14",
+    "L15"
+   ]
+  },
+  "SELD": {
+   "signs": [
+    "0",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C1.1"
+   ],
+   "laws": [
+    "L14"
+   ]
+  },
+  "DSEL": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {
+    "greatest": {
+     "beta": "TRUE"
+    }
+   },
+   "bound": {
+    "alpha": "deflationary"
+   },
+   "order": [
+    "C2.2"
+   ],
+   "laws": [
+    "L6",
+    "L7",
+    "L10",
+    "L14"
+   ]
+  },
+  "DSELD": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {},
+   "bound": {
+    "alpha": "deflationary"
+   },
+   "order": [
+    "C2.1"
+   ],
+   "laws": [
+    "L13",
+    "L14"
+   ]
+  },
+  "JSEL_INNER": {
+   "signs": [
+    "0",
+    "0",
+    "+",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C3.1",
+    "C4.1"
+   ],
+   "laws": [
+    "L11",
+    "L12"
+   ]
+  },
+  "JSEL_LEFT": {
+   "signs": [
+    "0",
+    "0",
+    "0",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C3.2"
+   ],
+   "laws": []
+  },
+  "JSEL_RIGHT": {
+   "signs": [
+    "0",
+    "0",
+    "0",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C4.2"
+   ],
+   "laws": []
+  },
+  "JDSEL_INNER": {
+   "signs": [
+    "+",
+    "+",
+    "+",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C5.1",
+    "C6.1"
+   ],
+   "laws": [
+    "L11",
+    "L12"
+   ]
+  },
+  "JDSEL_LEFT": {
+   "signs": [
+    "+",
+    "0",
+    "0",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C5.2"
+   ],
+   "laws": []
+  },
+  "JDSEL_RIGHT": {
+   "signs": [
+    "0",
+    "+",
+    "0",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C6.2"
+   ],
+   "laws": []
+  },
+  "UNION": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C8.2",
+    "C10.2"
+   ],
+   "laws": [
+    "L1",
+    "L2",
+    "L8",
+    "L13"
+   ]
+  },
+  "UNION_ALL": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {
+    "least": {
+     "alpha": "EMPTY",
+     "beta": "EMPTY"
+    }
+   },
+   "bound": {},
+   "order": [
+    "C7.3",
+    "C8.3",
+    "C9.3"
+   ],
+   "laws": [
+    "L1",
+    "L2",
+    "L8",
+    "L13"
+   ]
+  },
+  "INTERSECT": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {},
+   "bound": {
+    "alpha": "deflationary",
+    "beta": "deflationary"
+   },
+   "order": [
+    "C7.1",
+    "C8.1"
+   ],
+   "laws": [
+    "L1",
+    "L2",
+    "L10"
+   ]
+  },
+  "INTERSECT_ALL": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {},
+   "bound": {
+    "alpha": "deflationary",
+    "beta": "deflationary"
+   },
+   "order": [
+    "C7.2"
+   ],
+   "laws": [
+    "L1",
+    "L2",
+    "L10"
+   ]
+  },
+  "EXCEPT": {
+   "signs": [
+    "+",
+    "-"
+   ],
+   "identity": {},
+   "bound": {
+    "alpha": "deflationary"
+   },
+   "order": [
+    "C9.1",
+    "C10.1"
+   ],
+   "laws": [
+    "L8",
+    "L9",
+    "L10"
+   ]
+  },
+  "EXCEPT_ALL": {
+   "signs": [
+    "+",
+    "-"
+   ],
+   "identity": {
+    "least": {
+     "beta": "EMPTY"
+    }
+   },
+   "bound": {},
+   "order": [
+    "C9.2"
+   ],
+   "laws": [
+    "L8",
+    "L9",
+    "L10"
+   ]
+  },
+  "TRUE": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C11.2"
+   ],
+   "laws": [
+    "L12",
+    "L13",
+    "L15"
+   ]
+  },
+  "FALSE": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C11.1"
+   ],
+   "laws": []
+  },
+  "AND": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {
+    "greatest": {
+     "alpha": "TRUE",
+     "beta": "TRUE"
+    }
+   },
+   "bound": {},
+   "order": [
+    "C12.1"
+   ],
+   "laws": [
+    "L1",
+    "L2",
+    "L4",
+    "L6",
+    "L12"
+   ]
+  },
+  "OR": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {
+    "least": {
+     "alpha": "FALSE",
+     "beta": "FALSE"
+    }
+   },
+   "bound": {},
+   "order": [
+    "C12.2"
+   ],
+   "laws": [
+    "L1",
+    "L2",
+    "L4"
+   ]
+  },
+  "NOT": {
+   "signs": [
+    "-"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": [
+    "L3",
+    "L4",
+    "L5"
+   ]
+  },
+  "<": {
+   "signs": [
+    "-",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C13.1",
+    "C17.1"
+   ],
+   "laws": [
+    "L5"
+   ]
+  },
+  "<=": {
+   "signs": [
+    "-",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C13.2",
+    "C14.2"
+   ],
+   "laws": [
+    "L5"
+   ]
+  },
+  "=": {
+   "signs": [
+    "0",
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C14.1",
+    "C15.1"
+   ],
+   "laws": [
+    "L5"
+   ]
+  },
+  ">=": {
+   "signs": [
+    "+",
+    "-"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C15.2",
+    "C16.2"
+   ],
+   "laws": [
+    "L5"
+   ]
+  },
+  ">": {
+   "signs": [
+    "+",
+    "-"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C16.1",
+    "C18.1"
+   ],
+   "laws": [
+    "L5"
+   ]
+  },
+  "<>": {
+   "signs": [
+    "0",
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C17.2",
+    "C18.2"
+   ],
+   "laws": [
+    "L5"
+   ]
+  },
+  "BETWEEN": {
+   "signs": [
+    "0",
+    "-",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": []
+  },
+  "ISNULL": {
+   "signs": [
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": [
+    "L5"
+   ]
+  },
+  "ISNOTNULL": {
+   "signs": [
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": [
+    "L5"
+   ]
+  },
+  "EXISTS": {
+   "signs": [
+    "0",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": []
+  },
+  "CMPS_EQ": {
+   "signs": [
+    "0",
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": [
+    "L5"
+   ]
+  },
+  "CMPS_NE": {
+   "signs": [
+    "0",
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": [
+    "L5"
+   ]
+  },
+  "G_MIN": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C19.1"
+   ],
+   "laws": []
+  },
+  "G_AVG": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C19.2"
+   ],
+   "laws": []
+  },
+  "G_MAX": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C19.3"
+   ],
+   "laws": []
+  },
+  "G_SUM": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": []
+  },
+  "G_CNT": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C20.2"
+   ],
+   "laws": []
+  },
+  "G_CNTD": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C20.1"
+   ],
+   "laws": []
+  },
+  "G_CNTS": {
+   "signs": [],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C20.3"
+   ],
+   "laws": []
+  },
+  "GSEL": {
+   "signs": [
+    "0",
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": []
+  },
+  "AGG_MIN": {
+   "signs": [
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C21.1"
+   ],
+   "laws": []
+  },
+  "AGG_AVG": {
+   "signs": [
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C21.2"
+   ],
+   "laws": []
+  },
+  "AGG_MAX": {
+   "signs": [
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C21.3"
+   ],
+   "laws": []
+  },
+  "AGG_SUM": {
+   "signs": [
+    "0"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [],
+   "laws": []
+  },
+  "AGG_CNT": {
+   "signs": [
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C22.2"
+   ],
+   "laws": []
+  },
+  "AGG_CNTD": {
+   "signs": [
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C22.1"
+   ],
+   "laws": []
+  },
+  "AGG_CNTS": {
+   "signs": [
+    "+"
+   ],
+   "identity": {},
+   "bound": {},
+   "order": [
+    "C22.3"
+   ],
+   "laws": []
+  },
+  "PLUS": {
+   "signs": [
+    "+",
+    "+"
+   ],
+   "identity": {
+    "least": {
+     "beta": "0"
+    }
+   },
+   "bound": {},
+   "order": [],
+   "laws": []
+  }
+ },
+ "laws": [
+  {
+   "id": "L1",
+   "name": "commutativity",
+   "instances_from": [
+    {
+     "lhs": [
+      "UNION",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "UNION",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "UNION_ALL",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "UNION_ALL",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "INTERSECT",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "INTERSECT",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "INTERSECT_ALL",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "INTERSECT_ALL",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "AND_CA",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "AND_CA",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "OR_CA",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "OR_CA",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "AND_CAB",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "AND_CAB",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "OR_CAB",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "OR_CAB",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "AND_H",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "AND_H",
+      "y",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "OR_H",
+      "x",
+      "y"
+     ],
+     "rhs": [
+      "OR_H",
+      "y",
+      "x"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L2",
+   "name": "associativity",
+   "instances_from": [
+    {
+     "lhs": [
+      "UNION",
+      [
+       "UNION",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "UNION",
+      "x",
+      [
+       "UNION",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "UNION_ALL",
+      [
+       "UNION_ALL",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "UNION_ALL",
+      "x",
+      [
+       "UNION_ALL",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "INTERSECT",
+      [
+       "INTERSECT",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "INTERSECT",
+      "x",
+      [
+       "INTERSECT",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "INTERSECT_ALL",
+      [
+       "INTERSECT_ALL",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "INTERSECT_ALL",
+      "x",
+      [
+       "INTERSECT_ALL",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "AND_CA",
+      [
+       "AND_CA",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "AND_CA",
+      "x",
+      [
+       "AND_CA",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "OR_CA",
+      [
+       "OR_CA",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "OR_CA",
+      "x",
+      [
+       "OR_CA",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "AND_CAB",
+      [
+       "AND_CAB",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "AND_CAB",
+      "x",
+      [
+       "AND_CAB",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "OR_CAB",
+      [
+       "OR_CAB",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "OR_CAB",
+      "x",
+      [
+       "OR_CAB",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "AND_H",
+      [
+       "AND_H",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "AND_H",
+      "x",
+      [
+       "AND_H",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "OR_H",
+      [
+       "OR_H",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "OR_H",
+      "x",
+      [
+       "OR_H",
+       "y",
+       "z"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L3",
+   "name": "involution",
+   "instances_from": [
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "NOT_CA",
+       "x"
+      ]
+     ],
+     "rhs": "x"
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "NOT_CAB",
+       "x"
+      ]
+     ],
+     "rhs": "x"
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "NOT_H",
+       "x"
+      ]
+     ],
+     "rhs": "x"
+    }
+   ]
+  },
+  {
+   "id": "L4",
+   "name": "De Morgan",
+   "instances_from": [
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "AND_CA",
+       "x",
+       "y"
+      ]
+     ],
+     "rhs": [
+      "OR_CA",
+      [
+       "NOT_CA",
+       "x"
+      ],
+      [
+       "NOT_CA",
+       "y"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "OR_CA",
+       "x",
+       "y"
+      ]
+     ],
+     "rhs": [
+      "AND_CA",
+      [
+       "NOT_CA",
+       "x"
+      ],
+      [
+       "NOT_CA",
+       "y"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "AND_CAB",
+       "x",
+       "y"
+      ]
+     ],
+     "rhs": [
+      "OR_CAB",
+      [
+       "NOT_CAB",
+       "x"
+      ],
+      [
+       "NOT_CAB",
+       "y"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "OR_CAB",
+       "x",
+       "y"
+      ]
+     ],
+     "rhs": [
+      "AND_CAB",
+      [
+       "NOT_CAB",
+       "x"
+      ],
+      [
+       "NOT_CAB",
+       "y"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "AND_H",
+       "x",
+       "y"
+      ]
+     ],
+     "rhs": [
+      "OR_H",
+      [
+       "NOT_H",
+       "x"
+      ],
+      [
+       "NOT_H",
+       "y"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "OR_H",
+       "x",
+       "y"
+      ]
+     ],
+     "rhs": [
+      "AND_H",
+      [
+       "NOT_H",
+       "x"
+      ],
+      [
+       "NOT_H",
+       "y"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L5",
+   "name": "negated comparison",
+   "instances_from": [
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_A_<",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_A_>=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_A_<=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_A_>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_A_=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_A_<>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_A_>=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_A_<",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_A_>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_A_<=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_A_<>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_A_=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_AA_<",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_AA_>=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_AA_<=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_AA_>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_AA_=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_AA_<>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_AA_>=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_AA_<",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_AA_>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_AA_<=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMP_CA_AA_<>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CA_AA_=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_A_<",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_A_>=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_A_<=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_A_>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_A_=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_A_<>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_A_>=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_A_<",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_A_>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_A_<=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_A_<>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_A_=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_B_<",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_B_>=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_B_<=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_B_>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_B_=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_B_<>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_B_>=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_B_<",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_B_>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_B_<=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_B_<>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_B_=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_AB_<",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_AB_>=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_AB_<=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_AB_>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_AB_=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_AB_<>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_AB_>=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_AB_<",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_AB_>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_AB_<=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMP_CAB_AB_<>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_CAB_AB_=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "CMP_H_G_<",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_H_G_>=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "CMP_H_G_<=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_H_G_>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "CMP_H_G_=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_H_G_<>",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "CMP_H_G_>=",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_H_G_<",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "CMP_H_G_>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_H_G_<=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_H",
+      [
+       "CMP_H_G_<>",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMP_H_G_=",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "CMPS_CA_EQ",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMPS_CA_NE",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CA",
+      [
+       "ISNULL_CA",
+       "x"
+      ]
+     ],
+     "rhs": [
+      "ISNOTNULL_CA",
+      "x"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "CMPS_CAB_EQ",
+       "x",
+       "k"
+      ]
+     ],
+     "rhs": [
+      "CMPS_CAB_NE",
+      "x",
+      "k"
+     ]
+    },
+    {
+     "lhs": [
+      "NOT_CAB",
+      [
+       "ISNULL_CAB",
+       "x"
+      ]
+     ],
+     "rhs": [
+      "ISNOTNULL_CAB",
+      "x"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L6",
+   "name": "filter merge",
+   "instances_from": [
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "SEL",
+       "t",
+       "c"
+      ],
+      "d"
+     ],
+     "rhs": [
+      "SEL",
+      "t",
+      [
+       "AND_CA",
+       "c",
+       "d"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "DSEL",
+       "x",
+       "c"
+      ],
+      "d"
+     ],
+     "rhs": [
+      "DSEL",
+      "x",
+      [
+       "AND_CA",
+       "c",
+       "d"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L7",
+   "name": "filter swap",
+   "instances_from": [
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "SEL",
+       "t",
+       "c"
+      ],
+      "d"
+     ],
+     "rhs": [
+      "DSEL",
+      [
+       "SEL",
+       "t",
+       "d"
+      ],
+      "c"
+     ]
+    },
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "DSEL",
+       "x",
+       "c"
+      ],
+      "d"
+     ],
+     "rhs": [
+      "DSEL",
+      [
+       "DSEL",
+       "x",
+       "d"
+      ],
+      "c"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L8",
+   "name": "difference of a union",
+   "instances_from": [
+    {
+     "lhs": [
+      "EXCEPT",
+      [
+       "EXCEPT",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "EXCEPT",
+      "x",
+      [
+       "UNION",
+       "y",
+       "z"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "EXCEPT_ALL",
+      [
+       "EXCEPT_ALL",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "EXCEPT_ALL",
+      "x",
+      [
+       "UNION_ALL",
+       "y",
+       "z"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L9",
+   "name": "difference swap",
+   "instances_from": [
+    {
+     "lhs": [
+      "EXCEPT",
+      [
+       "EXCEPT",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "EXCEPT",
+      [
+       "EXCEPT",
+       "x",
+       "z"
+      ],
+      "y"
+     ]
+    },
+    {
+     "lhs": [
+      "EXCEPT_ALL",
+      [
+       "EXCEPT_ALL",
+       "x",
+       "y"
+      ],
+      "z"
+     ],
+     "rhs": [
+      "EXCEPT_ALL",
+      [
+       "EXCEPT_ALL",
+       "x",
+       "z"
+      ],
+      "y"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L10",
+   "name": "filter through difference or intersection",
+   "instances_from": [
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "EXCEPT",
+       "x",
+       "y"
+      ],
+      "c"
+     ],
+     "rhs": [
+      "EXCEPT",
+      [
+       "DSEL",
+       "x",
+       "c"
+      ],
+      "y"
+     ]
+    },
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "EXCEPT_ALL",
+       "x",
+       "y"
+      ],
+      "c"
+     ],
+     "rhs": [
+      "EXCEPT_ALL",
+      [
+       "DSEL",
+       "x",
+       "c"
+      ],
+      "y"
+     ]
+    },
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "INTERSECT",
+       "x",
+       "y"
+      ],
+      "c"
+     ],
+     "rhs": [
+      "INTERSECT",
+      [
+       "DSEL",
+       "x",
+       "c"
+      ],
+      "y"
+     ]
+    },
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "INTERSECT_ALL",
+       "x",
+       "y"
+      ],
+      "c"
+     ],
+     "rhs": [
+      "INTERSECT_ALL",
+      [
+       "DSEL",
+       "x",
+       "c"
+      ],
+      "y"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L11",
+   "name": "ON / WHERE exchange (INNER JOIN)",
+   "instances_from": [
+    {
+     "lhs": [
+      "JSEL_INNER",
+      "x",
+      "y",
+      "c",
+      "d"
+     ],
+     "rhs": [
+      "JSEL_INNER",
+      "x",
+      "y",
+      "d",
+      "c"
+     ]
+    },
+    {
+     "lhs": [
+      "JDSEL_INNER",
+      "x",
+      "y",
+      "c",
+      "d"
+     ],
+     "rhs": [
+      "JDSEL_INNER",
+      "x",
+      "y",
+      "d",
+      "c"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L12",
+   "name": "ON merge (INNER JOIN)",
+   "instances_from": [
+    {
+     "lhs": [
+      "JSEL_INNER",
+      "x",
+      "y",
+      "c",
+      "d"
+     ],
+     "rhs": [
+      "JSEL_INNER",
+      "x",
+      "y",
+      [
+       "AND_CAB",
+       "c",
+       "d"
+      ],
+      [
+       "TRUE_CAB"
+      ]
+     ]
+    },
+    {
+     "lhs": [
+      "JDSEL_INNER",
+      "x",
+      "y",
+      "c",
+      "d"
+     ],
+     "rhs": [
+      "JDSEL_INNER",
+      "x",
+      "y",
+      [
+       "AND_CAB",
+       "c",
+       "d"
+      ],
+      [
+       "TRUE_CAB"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L13",
+   "name": "distinct union",
+   "instances_from": [
+    {
+     "lhs": [
+      "DSELD",
+      [
+       "UNION_ALL",
+       "x",
+       "y"
+      ],
+      [
+       "TRUE_CA"
+      ]
+     ],
+     "rhs": [
+      "UNION",
+      "x",
+      "y"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L14",
+   "name": "derived-table merge",
+   "instances_from": [
+    {
+     "lhs": [
+      "DSEL",
+      [
+       "TBL",
+       "t"
+      ],
+      "c"
+     ],
+     "rhs": [
+      "SEL",
+      "t",
+      "c"
+     ]
+    },
+    {
+     "lhs": [
+      "DSELD",
+      [
+       "TBL",
+       "t"
+      ],
+      "c"
+     ],
+     "rhs": [
+      "SELD",
+      "t",
+      "c"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "L15",
+   "name": "WHERE TRUE",
+   "instances_from": [
+    {
+     "lhs": [
+      "SEL",
+      "t",
+      [
+       "TRUE_CA"
+      ]
+     ],
+     "rhs": [
+      "TBL",
+      "t"
+     ]
+    }
+   ]
+  }
+ ],
+ "extremes": {
+  "CA": {
+   "greatest": "TRUE_CA",
+   "least": "FALSE_CA"
+  },
+  "CAB": {
+   "greatest": "TRUE_CAB",
+   "least": "FALSE_CAB"
+  },
+  "H": {
+   "greatest": "TRUE_H",
+   "least": "FALSE_H"
+  }
+ }
+}

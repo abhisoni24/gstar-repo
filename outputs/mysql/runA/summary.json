@@ -1,0 +1,70 @@
+{
+ "pairs": 20000,
+ "identical_text_dropped": 484,
+ "databases": 10,
+ "depth": 6,
+ "seed": 11,
+ "engines": {
+  "duckdb": "1.1.3",
+  "mysql-9.4.0": "9.4.0",
+  "mysql-26.7.0": "26.7.0"
+ },
+ "note": "Execution counts were not saved (the original summary step crashed); violations.jsonl is complete. Triage below uses the reference evaluator (gtrans/refeval.py).",
+ "violations": 37,
+ "violating_pairs": 8,
+ "reference_violates": 0,
+ "by_engine": {
+  "duckdb": 35,
+  "mysql-9.4.0": 1,
+  "mysql-26.7.0": 1
+ },
+ "distinct_reduced_cases": [
+  {
+   "system": "duckdb",
+   "reduced_sql": "(SELECT a.c0, a.c1, a.c2 FROM t0 AS a) UNION ALL ((SELECT a.c0, a.c1, a.c2 FROM t0 AS a) UNION ALL (SELECT a.c0, a.c1, a.c2 FROM t0 AS a))",
+   "violations": 34,
+   "example_db": {
+    "t0": [
+     [
+      2,
+      11,
+      "ab"
+     ]
+    ]
+   }
+  },
+  {
+   "system": "mysql",
+   "reduced_sql": "SELECT COUNT(a.c0) FROM (SELECT a.c0, a.c1, a.c2 FROM ((SELECT a.c0, a.c1, a.c2 FROM t0 AS a) EXCEPT ALL (SELECT a.c0, a.c1, a.c2 FROM t1 AS a)) AS a WHERE EXISTS (SELECT 1 FROM t0 AS b WHERE a.c0 >= b.c0)) AS a",
+   "violations": 2,
+   "example_db": {
+    "t0": [
+     [
+      7,
+      12,
+      "b"
+     ],
+     [
+      7,
+      12,
+      "b"
+     ]
+    ]
+   }
+  },
+  {
+   "system": "duckdb",
+   "reduced_sql": "SELECT a.c0, a.c1, a.c2 FROM (SELECT a.c0, a.c1, a.c2 FROM t2 AS a WHERE a.c1 > a.c0) AS a WHERE (NOT (a.c1 <> 9)) AND (a.c0 >= 9)",
+   "violations": 1,
+   "example_db": {
+    "t2": [
+     [
+      9,
+      12,
+      "a"
+     ]
+    ]
+   }
+  }
+ ]
+}

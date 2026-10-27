@@ -1,0 +1,1 @@
+{"engine": "mysql-8.0.46", "version": "8.0.46", "seconds": 966.4, "stats": {"G*": {"executed": 100000, "reference violates (T unsound)": 0}, "G*_V": {"executed": 100000, "reference violates (T unsound)": 0}, "G*_P": {"executed": 100000, "reference violates (T unsound)": 0}}, "records": []}

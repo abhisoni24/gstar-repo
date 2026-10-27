@@ -1,0 +1,6 @@
+cffi==2.1.1
+cryptography==43.0.3
+duckdb==2.0.0
+packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1785888127/work
+pycparser==3.12
+PyMySQL==1.1.1

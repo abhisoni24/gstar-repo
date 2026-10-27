@@ -1,0 +1,28 @@
+{
+ "n_per_arm": 30000,
+ "n_dbs": 10,
+ "depth": 7,
+ "seed": 31,
+ "arms": {
+  "G*": {
+   "pairs": 30000,
+   "grammar_rules": 4294,
+   "tries": 44885,
+   "rejected": {
+    "duplicate": 14328,
+    "identical text": 557
+   },
+   "by_family_label": {
+    "rows =": 3536,
+    "rows ↑": 3654,
+    "rows ↓": 3642,
+    "value ↓": 3056,
+    "value =": 3071,
+    "groups ↓": 3302,
+    "value ↑": 3098,
+    "groups =": 3393,
+    "groups ↑": 3248
+   }
+  }
+ }
+}

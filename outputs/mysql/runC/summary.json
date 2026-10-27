@@ -1,0 +1,35 @@
+{
+ "engines": {
+  "mysql-26.7.0": "26.7.0",
+  "mysql-8.4.13": "8.4.13",
+  "mysql-9.7.2": "9.7.2"
+ },
+ "stats": {
+  "mysql-26.7.0": {
+   "G*": {
+    "executed": 300000,
+    "reference violates (T unsound)": 0
+   }
+  },
+  "mysql-8.4.13": {
+   "G*": {
+    "executed": 300000,
+    "reference violates (T unsound)": 0
+   }
+  },
+  "mysql-9.7.2": {
+   "G*": {
+    "executed": 300000,
+    "reference violates (T unsound)": 0
+   }
+  }
+ },
+ "arms": {},
+ "distinct_reduced_cases": [],
+ "violating_pairs_by_engine_and_arm": {
+  "mysql-26.7.0": {},
+  "mysql-8.4.13": {},
+  "mysql-9.7.2": {}
+ },
+ "classes": {}
+}

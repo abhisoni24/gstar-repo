@@ -1,0 +1,34 @@
+{
+  "_comment": "Operator table T for TinyQ (set semantics, two-valued logic, no NULLs). Signs per slot: '+' monotone, '-' antitone, '=' no effect, '0' no guarantee; slot order is (alpha, beta) for fan-in 2 and (gamma) for fan-in 1; for a comparison, alpha is the column value and beta the constant. identity: per operator, 'greatest' and 'least' entries keyed by slot. order: codes 'Ci.j' = chain i, rank j (lower rank is pointwise smaller); an operator may sit in several chains. laws: ids of the laws the operator takes part in; the equations are in the 'laws' list below.",
+  "operators": {
+    "WHERE":  {"signs": ["+", "+"], "identity": {"greatest": {"beta": "TRUE"}},                     "order": [],               "laws": ["L5", "L6", "L9"]},
+    "UNION":  {"signs": ["+", "+"], "identity": {"least": {"alpha": "EMPTY", "beta": "EMPTY"}},      "order": ["C2.2"],         "laws": ["L1", "L2", "L8"]},
+    "EXCEPT": {"signs": ["+", "-"], "identity": {"least": {"beta": "EMPTY"}},                       "order": ["C2.1"],         "laws": ["L7", "L8", "L9"]},
+    "AND":    {"signs": ["+", "+"], "identity": {"greatest": {"alpha": "TRUE", "beta": "TRUE"}},     "order": ["C1.1"],         "laws": ["L1", "L2", "L4", "L5"]},
+    "OR":     {"signs": ["+", "+"], "identity": {"least": {"alpha": "FALSE", "beta": "FALSE"}},      "order": ["C1.2"],         "laws": ["L1", "L2", "L4"]},
+    "NOT":    {"signs": ["-"],      "identity": {},                                                  "order": [],               "laws": ["L3", "L4", "L10"]},
+    "<":      {"signs": ["-", "+"], "identity": {}, "order": ["C3.1", "C7.1"], "laws": ["L10"]},
+    "<=":     {"signs": ["-", "+"], "identity": {}, "order": ["C3.2", "C4.2"], "laws": ["L10"]},
+    "=":      {"signs": ["0", "0"], "identity": {}, "order": ["C4.1", "C5.1"], "laws": ["L10"]},
+    ">=":     {"signs": ["+", "-"], "identity": {}, "order": ["C5.2", "C6.2"], "laws": ["L10"]},
+    ">":      {"signs": ["+", "-"], "identity": {}, "order": ["C6.1", "C8.1"], "laws": ["L10"]},
+    "<>":     {"signs": ["0", "0"], "identity": {}, "order": ["C7.2", "C8.2"], "laws": ["L10"]}
+  },
+  "_laws_comment": "Linear laws only: every variable occurs exactly once on each side. Patterns are [op, child, ...]; a bare string is a variable. 'f' stands for each operator in 'ops'. L10 is instantiated for each comparison pair and each column whose type allows both comparisons.",
+  "laws": [
+    {"id": "L1",  "name": "commutativity",             "ops": ["UNION", "AND", "OR"], "lhs": ["f", "x", "y"],               "rhs": ["f", "y", "x"]},
+    {"id": "L2",  "name": "associativity",             "ops": ["UNION", "AND", "OR"], "lhs": ["f", ["f", "x", "y"], "z"],   "rhs": ["f", "x", ["f", "y", "z"]]},
+    {"id": "L3",  "name": "involution",                "ops": ["NOT"],                "lhs": ["f", ["f", "x"]],             "rhs": "x"},
+    {"id": "L4",  "name": "De Morgan",                 "instances": [
+        {"lhs": ["NOT", ["AND", "x", "y"]], "rhs": ["OR", ["NOT", "x"], ["NOT", "y"]]},
+        {"lhs": ["NOT", ["OR", "x", "y"]],  "rhs": ["AND", ["NOT", "x"], ["NOT", "y"]]}]},
+    {"id": "L5",  "name": "filter merge",              "lhs": ["WHERE", ["WHERE", "x", "c"], "d"],  "rhs": ["WHERE", "x", ["AND", "c", "d"]]},
+    {"id": "L6",  "name": "filter swap",               "lhs": ["WHERE", ["WHERE", "x", "c"], "d"],  "rhs": ["WHERE", ["WHERE", "x", "d"], "c"]},
+    {"id": "L7",  "name": "difference swap",           "lhs": ["EXCEPT", ["EXCEPT", "x", "y"], "z"], "rhs": ["EXCEPT", ["EXCEPT", "x", "z"], "y"]},
+    {"id": "L8",  "name": "difference of a union",     "lhs": ["EXCEPT", ["EXCEPT", "x", "y"], "z"], "rhs": ["EXCEPT", "x", ["UNION", "y", "z"]]},
+    {"id": "L9",  "name": "filter through difference", "lhs": ["WHERE", ["EXCEPT", "x", "y"], "c"],  "rhs": ["EXCEPT", ["WHERE", "x", "c"], "y"]},
+    {"id": "L10", "name": "negated comparison",        "pairs": [["<", ">="], ["<=", ">"], ["=", "<>"]],
+                                                       "lhs": ["NOT", ["θ", "a", "k"]],             "rhs": ["θ̄", "a", "k"]}
+  ],
+  "_excluded_comment": "Valid in TinyQ but not linear (a variable repeats), so not used: idempotence x UNION x = x, c AND c = c; absorption c AND (c OR d) = c; distributivity of AND/OR; (x UNION y) WHERE c = (x WHERE c) UNION (y WHERE c); x WHERE (c OR d) = (x WHERE c) UNION (x WHERE d); x WHERE NOT c = x EXCEPT (x WHERE c); x EXCEPT (y UNION z) is covered by L8, but (x UNION y) EXCEPT z = (x EXCEPT z) UNION (y EXCEPT z) repeats z."
+}

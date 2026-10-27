@@ -1,0 +1,16 @@
+{
+ "raw": {
+  "G": 71774,
+  "V": 9068,
+  "P": 20106,
+  "only_G": 51039,
+  "only_G_nonlaw": 6219
+ },
+ "mirrors_identified": {
+  "G": 69554,
+  "V": 9068,
+  "P": 20106,
+  "only_G": 48819,
+  "only_G_nonlaw": 3999
+ }
+}

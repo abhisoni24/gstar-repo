@@ -1,0 +1,3624 @@
+[
+ {
+  "edit": "constant: K_INT[k] ⇒ K_INT[k′] (k′ < k)",
+  "kind": "constant",
+  "sort": "KInt",
+  "own_change": "↓",
+  "why": "domain order of int: k′ < k",
+  "valscope": [
+   "ExprM_AddConstant (≈: k ⇒ k′ in a comparison equals adding k′ − k to the column)"
+  ],
+  "pinolo": [
+   "BETWEEN (unverified)"
+  ]
+ },
+ {
+  "edit": "constant: K_INT[k] ⇒ K_INT[k′] (k′ > k)",
+  "kind": "constant",
+  "sort": "KInt",
+  "own_change": "↑",
+  "why": "domain order of int: k′ > k",
+  "valscope": [
+   "ExprM_AddConstant (≈: k ⇒ k′ in a comparison equals adding k′ − k to the column)"
+  ],
+  "pinolo": [
+   "BETWEEN (unverified)"
+  ]
+ },
+ {
+  "edit": "constant: K_POS[k] ⇒ K_POS[k′] (k′ < k)",
+  "kind": "constant",
+  "sort": "KPos",
+  "own_change": "↓",
+  "why": "domain order of pos: k′ < k",
+  "valscope": [],
+  "pinolo": [
+   "BETWEEN (unverified)"
+  ]
+ },
+ {
+  "edit": "constant: K_POS[k] ⇒ K_POS[k′] (k′ > k)",
+  "kind": "constant",
+  "sort": "KPos",
+  "own_change": "↑",
+  "why": "domain order of pos: k′ > k",
+  "valscope": [],
+  "pinolo": [
+   "BETWEEN (unverified)"
+  ]
+ },
+ {
+  "edit": "drop: AND_CA(<CA>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "identity: TRUE is the greatest value of slot α of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: AND_CA(x1, <CA>) ⇒ x1",
+  "kind": "drop",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "identity: TRUE is the greatest value of slot β of AND, sign +",
+  "valscope": [
+   "FixMLogicalAnd"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: AND_CAB(<CAB>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "identity: TRUE is the greatest value of slot α of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: AND_CAB(x1, <CAB>) ⇒ x1",
+  "kind": "drop",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "identity: TRUE is the greatest value of slot β of AND, sign +",
+  "valscope": [
+   "FixMLogicalAnd"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: AND_H(<H>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "identity: TRUE is the greatest value of slot α of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: AND_H(x1, <H>) ⇒ x1",
+  "kind": "drop",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "identity: TRUE is the greatest value of slot β of AND, sign +",
+  "valscope": [
+   "FixMLogicalAnd"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: DSEL(x1, <CA>) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "identity: TRUE is the greatest value of slot β of DSEL, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: DSELD(x1, <CA>) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "bound: DSELD is deflationary in slot α",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: EXCEPT(x1, <Q>) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "bound: EXCEPT is deflationary in slot α",
+  "valscope": [
+   "FixMExcept"
+  ],
+  "pinolo": [
+   "r ⇔ r MINUS r′"
+  ]
+ },
+ {
+  "edit": "drop: EXCEPT_ALL(x1, <Q>) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "identity: ∅ is the least value of slot β of EXCEPT_ALL, sign −",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: INTERSECT(<Q>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "bound: INTERSECT is deflationary in slot β",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: INTERSECT(x1, <Q>) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "bound: INTERSECT is deflationary in slot α",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: INTERSECT_ALL(<Q>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "bound: INTERSECT_ALL is deflationary in slot β",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: INTERSECT_ALL(x1, <Q>) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "bound: INTERSECT_ALL is deflationary in slot α",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: OR_CA(<CA>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "identity: FALSE is the least value of slot α of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: OR_CA(x1, <CA>) ⇒ x1",
+  "kind": "drop",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "identity: FALSE is the least value of slot β of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: OR_CAB(<CAB>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "identity: FALSE is the least value of slot α of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: OR_CAB(x1, <CAB>) ⇒ x1",
+  "kind": "drop",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "identity: FALSE is the least value of slot β of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: OR_H(<H>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "identity: FALSE is the least value of slot α of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: OR_H(x1, <H>) ⇒ x1",
+  "kind": "drop",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "identity: FALSE is the least value of slot β of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: PLUS(x1, <KPos>) ⇒ x1",
+  "kind": "drop",
+  "sort": "V",
+  "own_change": "↓",
+  "why": "identity: 0 is the least value of slot β of PLUS, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: UNION_ALL(<Q>, x1) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "identity: ∅ is the least value of slot α of UNION_ALL, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "drop: UNION_ALL(x1, <Q>) ⇒ x1",
+  "kind": "drop",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "identity: ∅ is the least value of slot β of UNION_ALL, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "extreme: <CA> ⇒ FALSE_CA",
+  "kind": "extreme",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "extreme: FALSE_CA is the least CA",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "extreme: <CA> ⇒ TRUE_CA",
+  "kind": "extreme",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "extreme: TRUE_CA is the greatest CA",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "extreme: <CAB> ⇒ FALSE_CAB",
+  "kind": "extreme",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "extreme: FALSE_CAB is the least CAB",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "extreme: <CAB> ⇒ TRUE_CAB",
+  "kind": "extreme",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "extreme: TRUE_CAB is the greatest CAB",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "extreme: <H> ⇒ FALSE_H",
+  "kind": "extreme",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "extreme: FALSE_H is the least H",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "extreme: <H> ⇒ TRUE_H",
+  "kind": "extreme",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "extreme: TRUE_H is the greatest H",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "extreme: FALSE_CA ⇒ <CA>",
+  "kind": "extreme",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "extreme: FALSE_CA is the least CA",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "extreme: FALSE_CAB ⇒ <CAB>",
+  "kind": "extreme",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "extreme: FALSE_CAB is the least CAB",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "extreme: FALSE_H ⇒ <H>",
+  "kind": "extreme",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "extreme: FALSE_H is the least H",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "extreme: TRUE_CA ⇒ <CA>",
+  "kind": "extreme",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "extreme: TRUE_CA is the greatest CA",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "extreme: TRUE_CAB ⇒ <CAB>",
+  "kind": "extreme",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "extreme: TRUE_CAB is the greatest CAB",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "extreme: TRUE_H ⇒ <H>",
+  "kind": "extreme",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "extreme: TRUE_H is the greatest H",
+  "valscope": [
+   "FixMHaving",
+   "FixMOn",
+   "FixMWhere"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ AND_CA(<CA>, x1)",
+  "kind": "insert",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "identity: TRUE is the greatest value of slot α of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ AND_CA(x1, <CA>)",
+  "kind": "insert",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "identity: TRUE is the greatest value of slot β of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ AND_CAB(<CAB>, x1)",
+  "kind": "insert",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "identity: TRUE is the greatest value of slot α of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ AND_CAB(x1, <CAB>)",
+  "kind": "insert",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "identity: TRUE is the greatest value of slot β of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ AND_H(<H>, x1)",
+  "kind": "insert",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "identity: TRUE is the greatest value of slot α of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ AND_H(x1, <H>)",
+  "kind": "insert",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "identity: TRUE is the greatest value of slot β of AND, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ DSEL(x1, <CA>)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "identity: TRUE is the greatest value of slot β of DSEL, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ DSELD(x1, <CA>)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "bound: DSELD is deflationary in slot α",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ EXCEPT(x1, <Q>)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "bound: EXCEPT is deflationary in slot α",
+  "valscope": [],
+  "pinolo": [
+   "r ⇔ r MINUS r′"
+  ]
+ },
+ {
+  "edit": "insert: x1 ⇒ EXCEPT_ALL(x1, <Q>)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "identity: ∅ is the least value of slot β of EXCEPT_ALL, sign −",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ INTERSECT(<Q>, x1)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "bound: INTERSECT is deflationary in slot β",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ INTERSECT(x1, <Q>)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "bound: INTERSECT is deflationary in slot α",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ INTERSECT_ALL(<Q>, x1)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "bound: INTERSECT_ALL is deflationary in slot β",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ INTERSECT_ALL(x1, <Q>)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "bound: INTERSECT_ALL is deflationary in slot α",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ OR_CA(<CA>, x1)",
+  "kind": "insert",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "identity: FALSE is the least value of slot α of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ OR_CA(x1, <CA>)",
+  "kind": "insert",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "identity: FALSE is the least value of slot β of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ OR_CAB(<CAB>, x1)",
+  "kind": "insert",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "identity: FALSE is the least value of slot α of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ OR_CAB(x1, <CAB>)",
+  "kind": "insert",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "identity: FALSE is the least value of slot β of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ OR_H(<H>, x1)",
+  "kind": "insert",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "identity: FALSE is the least value of slot α of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ OR_H(x1, <H>)",
+  "kind": "insert",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "identity: FALSE is the least value of slot β of OR, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ PLUS(x1, <KPos>)",
+  "kind": "insert",
+  "sort": "V",
+  "own_change": "↑",
+  "why": "identity: 0 is the least value of slot β of PLUS, sign +",
+  "valscope": [
+   "AggM_AvgAddConstant / ExprM_AddConstant"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ UNION_ALL(<Q>, x1)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "identity: ∅ is the least value of slot α of UNION_ALL, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "insert: x1 ⇒ UNION_ALL(x1, <Q>)",
+  "kind": "insert",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "identity: ∅ is the least value of slot β of UNION_ALL, sign +",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_CA(AND_CA(x, y), z) ⇒ AND_CA(x, AND_CA(y, z))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_CA(NOT_CA(x), NOT_CA(y)) ⇒ NOT_CA(OR_CA(x, y))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_CA(x, AND_CA(y, z)) ⇒ AND_CA(AND_CA(x, y), z)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_CA(x, y) ⇒ AND_CA(y, x)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_CAB(AND_CAB(x, y), z) ⇒ AND_CAB(x, AND_CAB(y, z))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_CAB(NOT_CAB(x), NOT_CAB(y)) ⇒ NOT_CAB(OR_CAB(x, y))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_CAB(x, AND_CAB(y, z)) ⇒ AND_CAB(AND_CAB(x, y), z)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_CAB(x, y) ⇒ AND_CAB(y, x)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_H(AND_H(x, y), z) ⇒ AND_H(x, AND_H(y, z))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_H(NOT_H(x), NOT_H(y)) ⇒ NOT_H(OR_H(x, y))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_H(x, AND_H(y, z)) ⇒ AND_H(AND_H(x, y), z)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: AND_H(x, y) ⇒ AND_H(y, x)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMPS_CAB_NE(x, k) ⇒ NOT_CAB(CMPS_CAB_EQ(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMPS_CA_NE(x, k) ⇒ NOT_CA(CMPS_CA_EQ(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_AB_<(x, k) ⇒ NOT_CAB(CMP_CAB_AB_>=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_AB_<=(x, k) ⇒ NOT_CAB(CMP_CAB_AB_>(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_AB_<>(x, k) ⇒ NOT_CAB(CMP_CAB_AB_=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_AB_=(x, k) ⇒ NOT_CAB(CMP_CAB_AB_<>(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_AB_>(x, k) ⇒ NOT_CAB(CMP_CAB_AB_<=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_AB_>=(x, k) ⇒ NOT_CAB(CMP_CAB_AB_<(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_A_<(x, k) ⇒ NOT_CAB(CMP_CAB_A_>=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_A_<=(x, k) ⇒ NOT_CAB(CMP_CAB_A_>(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_A_<>(x, k) ⇒ NOT_CAB(CMP_CAB_A_=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_A_=(x, k) ⇒ NOT_CAB(CMP_CAB_A_<>(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_A_>(x, k) ⇒ NOT_CAB(CMP_CAB_A_<=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_A_>=(x, k) ⇒ NOT_CAB(CMP_CAB_A_<(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_B_<(x, k) ⇒ NOT_CAB(CMP_CAB_B_>=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_B_<=(x, k) ⇒ NOT_CAB(CMP_CAB_B_>(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_B_<>(x, k) ⇒ NOT_CAB(CMP_CAB_B_=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_B_=(x, k) ⇒ NOT_CAB(CMP_CAB_B_<>(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_B_>(x, k) ⇒ NOT_CAB(CMP_CAB_B_<=(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CAB_B_>=(x, k) ⇒ NOT_CAB(CMP_CAB_B_<(x, k))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_AA_<(x, k) ⇒ NOT_CA(CMP_CA_AA_>=(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_AA_<=(x, k) ⇒ NOT_CA(CMP_CA_AA_>(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_AA_<>(x, k) ⇒ NOT_CA(CMP_CA_AA_=(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_AA_=(x, k) ⇒ NOT_CA(CMP_CA_AA_<>(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_AA_>(x, k) ⇒ NOT_CA(CMP_CA_AA_<=(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_AA_>=(x, k) ⇒ NOT_CA(CMP_CA_AA_<(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_A_<(x, k) ⇒ NOT_CA(CMP_CA_A_>=(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_A_<=(x, k) ⇒ NOT_CA(CMP_CA_A_>(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_A_<>(x, k) ⇒ NOT_CA(CMP_CA_A_=(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_A_=(x, k) ⇒ NOT_CA(CMP_CA_A_<>(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_A_>(x, k) ⇒ NOT_CA(CMP_CA_A_<=(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_CA_A_>=(x, k) ⇒ NOT_CA(CMP_CA_A_<(x, k))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_H_G_<(x, k) ⇒ NOT_H(CMP_H_G_>=(x, k))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_H_G_<=(x, k) ⇒ NOT_H(CMP_H_G_>(x, k))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_H_G_<>(x, k) ⇒ NOT_H(CMP_H_G_=(x, k))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_H_G_=(x, k) ⇒ NOT_H(CMP_H_G_<>(x, k))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_H_G_>(x, k) ⇒ NOT_H(CMP_H_G_<=(x, k))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: CMP_H_G_>=(x, k) ⇒ NOT_H(CMP_H_G_<(x, k))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(DSEL(x, c), d) ⇒ DSEL(DSEL(x, d), c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L7 (filter swap)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(DSEL(x, c), d) ⇒ DSEL(x, AND_CA(c, d))",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L6 (filter merge)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(EXCEPT(x, y), c) ⇒ EXCEPT(DSEL(x, c), y)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L10 (filter through difference or intersection)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(EXCEPT_ALL(x, y), c) ⇒ EXCEPT_ALL(DSEL(x, c), y)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L10 (filter through difference or intersection)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(INTERSECT(x, y), c) ⇒ INTERSECT(DSEL(x, c), y)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L10 (filter through difference or intersection)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(INTERSECT_ALL(x, y), c) ⇒ INTERSECT_ALL(DSEL(x, c), y)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L10 (filter through difference or intersection)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(SEL(t, c), d) ⇒ DSEL(SEL(t, d), c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L7 (filter swap)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(SEL(t, c), d) ⇒ SEL(t, AND_CA(c, d))",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L6 (filter merge)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(TBL(t), c) ⇒ SEL(t, c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L14 (derived-table merge)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSEL(x, AND_CA(c, d)) ⇒ DSEL(DSEL(x, c), d)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L6 (filter merge)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSELD(TBL(t), c) ⇒ SELD(t, c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L14 (derived-table merge)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: DSELD(UNION_ALL(x, y), TRUE_CA) ⇒ UNION(x, y)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L13 (distinct union)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: EXCEPT(DSEL(x, c), y) ⇒ DSEL(EXCEPT(x, y), c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L10 (filter through difference or intersection)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: EXCEPT(EXCEPT(x, y), z) ⇒ EXCEPT(EXCEPT(x, z), y)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L9 (difference swap)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: EXCEPT(EXCEPT(x, y), z) ⇒ EXCEPT(x, UNION(y, z))",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L8 (difference of a union)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: EXCEPT(x, UNION(y, z)) ⇒ EXCEPT(EXCEPT(x, y), z)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L8 (difference of a union)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: EXCEPT_ALL(DSEL(x, c), y) ⇒ DSEL(EXCEPT_ALL(x, y), c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L10 (filter through difference or intersection)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: EXCEPT_ALL(EXCEPT_ALL(x, y), z) ⇒ EXCEPT_ALL(EXCEPT_ALL(x, z), y)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L9 (difference swap)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: EXCEPT_ALL(EXCEPT_ALL(x, y), z) ⇒ EXCEPT_ALL(x, UNION_ALL(y, z))",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L8 (difference of a union)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: EXCEPT_ALL(x, UNION_ALL(y, z)) ⇒ EXCEPT_ALL(EXCEPT_ALL(x, y), z)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L8 (difference of a union)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: INTERSECT(DSEL(x, c), y) ⇒ DSEL(INTERSECT(x, y), c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L10 (filter through difference or intersection)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: INTERSECT(INTERSECT(x, y), z) ⇒ INTERSECT(x, INTERSECT(y, z))",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: INTERSECT(x, INTERSECT(y, z)) ⇒ INTERSECT(INTERSECT(x, y), z)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: INTERSECT(x, y) ⇒ INTERSECT(y, x)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: INTERSECT_ALL(DSEL(x, c), y) ⇒ DSEL(INTERSECT_ALL(x, y), c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L10 (filter through difference or intersection)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: INTERSECT_ALL(INTERSECT_ALL(x, y), z) ⇒ INTERSECT_ALL(x, INTERSECT_ALL(y, z))",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: INTERSECT_ALL(x, INTERSECT_ALL(y, z)) ⇒ INTERSECT_ALL(INTERSECT_ALL(x, y), z)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: INTERSECT_ALL(x, y) ⇒ INTERSECT_ALL(y, x)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: ISNOTNULL_CA(x) ⇒ NOT_CA(ISNULL_CA(x))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: ISNOTNULL_CAB(x) ⇒ NOT_CAB(ISNULL_CAB(x))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: JDSEL_INNER(x, y, AND_CAB(c, d), TRUE_CAB) ⇒ JDSEL_INNER(x, y, c, d)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L12 (ON merge (INNER JOIN))",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: JDSEL_INNER(x, y, c, d) ⇒ JDSEL_INNER(x, y, AND_CAB(c, d), TRUE_CAB)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L12 (ON merge (INNER JOIN))",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: JDSEL_INNER(x, y, c, d) ⇒ JDSEL_INNER(x, y, d, c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L11 (ON / WHERE exchange (INNER JOIN))",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: JSEL_INNER(x, y, AND_CAB(c, d), TRUE_CAB) ⇒ JSEL_INNER(x, y, c, d)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L12 (ON merge (INNER JOIN))",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: JSEL_INNER(x, y, c, d) ⇒ JSEL_INNER(x, y, AND_CAB(c, d), TRUE_CAB)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L12 (ON merge (INNER JOIN))",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: JSEL_INNER(x, y, c, d) ⇒ JSEL_INNER(x, y, d, c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L11 (ON / WHERE exchange (INNER JOIN))",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(AND_CA(x, y)) ⇒ OR_CA(NOT_CA(x), NOT_CA(y))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMPS_CA_EQ(x, k)) ⇒ CMPS_CA_NE(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_AA_<(x, k)) ⇒ CMP_CA_AA_>=(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_AA_<=(x, k)) ⇒ CMP_CA_AA_>(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_AA_<>(x, k)) ⇒ CMP_CA_AA_=(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_AA_=(x, k)) ⇒ CMP_CA_AA_<>(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_AA_>(x, k)) ⇒ CMP_CA_AA_<=(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_AA_>=(x, k)) ⇒ CMP_CA_AA_<(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_A_<(x, k)) ⇒ CMP_CA_A_>=(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_A_<=(x, k)) ⇒ CMP_CA_A_>(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_A_<>(x, k)) ⇒ CMP_CA_A_=(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_A_=(x, k)) ⇒ CMP_CA_A_<>(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_A_>(x, k)) ⇒ CMP_CA_A_<=(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(CMP_CA_A_>=(x, k)) ⇒ CMP_CA_A_<(x, k)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(ISNULL_CA(x)) ⇒ ISNOTNULL_CA(x)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(NOT_CA(x)) ⇒ x",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L3 (involution)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CA(OR_CA(x, y)) ⇒ AND_CA(NOT_CA(x), NOT_CA(y))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(AND_CAB(x, y)) ⇒ OR_CAB(NOT_CAB(x), NOT_CAB(y))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMPS_CAB_EQ(x, k)) ⇒ CMPS_CAB_NE(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_AB_<(x, k)) ⇒ CMP_CAB_AB_>=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_AB_<=(x, k)) ⇒ CMP_CAB_AB_>(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_AB_<>(x, k)) ⇒ CMP_CAB_AB_=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_AB_=(x, k)) ⇒ CMP_CAB_AB_<>(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_AB_>(x, k)) ⇒ CMP_CAB_AB_<=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_AB_>=(x, k)) ⇒ CMP_CAB_AB_<(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_A_<(x, k)) ⇒ CMP_CAB_A_>=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_A_<=(x, k)) ⇒ CMP_CAB_A_>(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_A_<>(x, k)) ⇒ CMP_CAB_A_=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_A_=(x, k)) ⇒ CMP_CAB_A_<>(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_A_>(x, k)) ⇒ CMP_CAB_A_<=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_A_>=(x, k)) ⇒ CMP_CAB_A_<(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_B_<(x, k)) ⇒ CMP_CAB_B_>=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_B_<=(x, k)) ⇒ CMP_CAB_B_>(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_B_<>(x, k)) ⇒ CMP_CAB_B_=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_B_=(x, k)) ⇒ CMP_CAB_B_<>(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_B_>(x, k)) ⇒ CMP_CAB_B_<=(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(CMP_CAB_B_>=(x, k)) ⇒ CMP_CAB_B_<(x, k)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(ISNULL_CAB(x)) ⇒ ISNOTNULL_CAB(x)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(NOT_CAB(x)) ⇒ x",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L3 (involution)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_CAB(OR_CAB(x, y)) ⇒ AND_CAB(NOT_CAB(x), NOT_CAB(y))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(AND_H(x, y)) ⇒ OR_H(NOT_H(x), NOT_H(y))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(CMP_H_G_<(x, k)) ⇒ CMP_H_G_>=(x, k)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(CMP_H_G_<=(x, k)) ⇒ CMP_H_G_>(x, k)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(CMP_H_G_<>(x, k)) ⇒ CMP_H_G_=(x, k)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(CMP_H_G_=(x, k)) ⇒ CMP_H_G_<>(x, k)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(CMP_H_G_>(x, k)) ⇒ CMP_H_G_<=(x, k)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(CMP_H_G_>=(x, k)) ⇒ CMP_H_G_<(x, k)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L5 (negated comparison)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(NOT_H(x)) ⇒ x",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L3 (involution)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: NOT_H(OR_H(x, y)) ⇒ AND_H(NOT_H(x), NOT_H(y))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_CA(NOT_CA(x), NOT_CA(y)) ⇒ NOT_CA(AND_CA(x, y))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_CA(OR_CA(x, y), z) ⇒ OR_CA(x, OR_CA(y, z))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_CA(x, OR_CA(y, z)) ⇒ OR_CA(OR_CA(x, y), z)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_CA(x, y) ⇒ OR_CA(y, x)",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_CAB(NOT_CAB(x), NOT_CAB(y)) ⇒ NOT_CAB(AND_CAB(x, y))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_CAB(OR_CAB(x, y), z) ⇒ OR_CAB(x, OR_CAB(y, z))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_CAB(x, OR_CAB(y, z)) ⇒ OR_CAB(OR_CAB(x, y), z)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_CAB(x, y) ⇒ OR_CAB(y, x)",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_H(NOT_H(x), NOT_H(y)) ⇒ NOT_H(AND_H(x, y))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L4 (De Morgan)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_H(OR_H(x, y), z) ⇒ OR_H(x, OR_H(y, z))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_H(x, OR_H(y, z)) ⇒ OR_H(OR_H(x, y), z)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: OR_H(x, y) ⇒ OR_H(y, x)",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: SEL(t, AND_CA(c, d)) ⇒ DSEL(SEL(t, c), d)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L6 (filter merge)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: SEL(t, TRUE_CA) ⇒ TBL(t)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L15 (WHERE TRUE)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: SEL(t, c) ⇒ DSEL(TBL(t), c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L14 (derived-table merge)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: SELD(t, c) ⇒ DSELD(TBL(t), c)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L14 (derived-table merge)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: TBL(t) ⇒ SEL(t, TRUE_CA)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L15 (WHERE TRUE)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: UNION(UNION(x, y), z) ⇒ UNION(x, UNION(y, z))",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: UNION(x, UNION(y, z)) ⇒ UNION(UNION(x, y), z)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: UNION(x, y) ⇒ DSELD(UNION_ALL(x, y), TRUE_CA)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L13 (distinct union)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: UNION(x, y) ⇒ UNION(y, x)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: UNION_ALL(UNION_ALL(x, y), z) ⇒ UNION_ALL(x, UNION_ALL(y, z))",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: UNION_ALL(x, UNION_ALL(y, z)) ⇒ UNION_ALL(UNION_ALL(x, y), z)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L2 (associativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: UNION_ALL(x, y) ⇒ UNION_ALL(y, x)",
+  "kind": "law",
+  "sort": "Q",
+  "own_change": "=",
+  "why": "law L1 (commutativity)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: x ⇒ NOT_CA(NOT_CA(x))",
+  "kind": "law",
+  "sort": "CA",
+  "own_change": "=",
+  "why": "law L3 (involution)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: x ⇒ NOT_CAB(NOT_CAB(x))",
+  "kind": "law",
+  "sort": "CAB",
+  "own_change": "=",
+  "why": "law L3 (involution)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "law: x ⇒ NOT_H(NOT_H(x))",
+  "kind": "law",
+  "sort": "H",
+  "own_change": "=",
+  "why": "law L3 (involution)",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_AVG(x1) ⇒ AGG_MAX(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↑",
+  "why": "order: AGG_AVG ≼ AGG_MAX",
+  "valscope": [
+   "AggM_AvgToMax"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_AVG(x1) ⇒ AGG_MIN(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↓",
+  "why": "order: AGG_MIN ≼ AGG_AVG",
+  "valscope": [
+   "AggM_AvgToMin"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_CNT(x1) ⇒ AGG_CNTD(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↓",
+  "why": "order: AGG_CNTD ≼ AGG_CNT",
+  "valscope": [
+   "AggM_CountToCountDistinct"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_CNT(x1) ⇒ AGG_CNTS(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↑",
+  "why": "order: AGG_CNT ≼ AGG_CNTS",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_CNTD(x1) ⇒ AGG_CNT(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↑",
+  "why": "order: AGG_CNTD ≼ AGG_CNT",
+  "valscope": [
+   "AggM_CountDistinctToCount"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_CNTD(x1) ⇒ AGG_CNTS(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↑",
+  "why": "order: AGG_CNTD ≼ AGG_CNTS",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_CNTS(x1) ⇒ AGG_CNT(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↓",
+  "why": "order: AGG_CNT ≼ AGG_CNTS",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_CNTS(x1) ⇒ AGG_CNTD(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↓",
+  "why": "order: AGG_CNTD ≼ AGG_CNTS",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_MAX(x1) ⇒ AGG_AVG(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↓",
+  "why": "order: AGG_AVG ≼ AGG_MAX",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_MAX(x1) ⇒ AGG_MIN(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↓",
+  "why": "order: AGG_MIN ≼ AGG_MAX",
+  "valscope": [
+   "AggM_MaxToMin"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_MIN(x1) ⇒ AGG_AVG(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↑",
+  "why": "order: AGG_MIN ≼ AGG_AVG",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AGG_MIN(x1) ⇒ AGG_MAX(x1)",
+  "kind": "swap",
+  "sort": "V",
+  "own_change": "↑",
+  "why": "order: AGG_MIN ≼ AGG_MAX",
+  "valscope": [
+   "AggM_MinToMax"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AND_CA(x1, x2) ⇒ OR_CA(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: AND ≼ OR",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AND_CAB(x1, x2) ⇒ OR_CAB(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: AND ≼ OR",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: AND_H(x1, x2) ⇒ OR_H(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "order: AND ≼ OR",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_<(x1, x2) ⇒ CMP_CAB_AB_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_<(x1, x2) ⇒ CMP_CAB_AB_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_<=(x1, x2) ⇒ CMP_CAB_AB_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_<=(x1, x2) ⇒ CMP_CAB_AB_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_<>(x1, x2) ⇒ CMP_CAB_AB_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_<>(x1, x2) ⇒ CMP_CAB_AB_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_=(x1, x2) ⇒ CMP_CAB_AB_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_=(x1, x2) ⇒ CMP_CAB_AB_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: = ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_>(x1, x2) ⇒ CMP_CAB_AB_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_>(x1, x2) ⇒ CMP_CAB_AB_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_>=(x1, x2) ⇒ CMP_CAB_AB_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: = ≼ ≥",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_AB_>=(x1, x2) ⇒ CMP_CAB_AB_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_<(x1, x2) ⇒ CMP_CAB_A_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_<(x1, x2) ⇒ CMP_CAB_A_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_<=(x1, x2) ⇒ CMP_CAB_A_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_<=(x1, x2) ⇒ CMP_CAB_A_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_<>(x1, x2) ⇒ CMP_CAB_A_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_<>(x1, x2) ⇒ CMP_CAB_A_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_=(x1, x2) ⇒ CMP_CAB_A_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_=(x1, x2) ⇒ CMP_CAB_A_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: = ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_>(x1, x2) ⇒ CMP_CAB_A_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_>(x1, x2) ⇒ CMP_CAB_A_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_>=(x1, x2) ⇒ CMP_CAB_A_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: = ≼ ≥",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_A_>=(x1, x2) ⇒ CMP_CAB_A_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_<(x1, x2) ⇒ CMP_CAB_B_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_<(x1, x2) ⇒ CMP_CAB_B_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_<=(x1, x2) ⇒ CMP_CAB_B_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_<=(x1, x2) ⇒ CMP_CAB_B_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_<>(x1, x2) ⇒ CMP_CAB_B_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_<>(x1, x2) ⇒ CMP_CAB_B_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_=(x1, x2) ⇒ CMP_CAB_B_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_=(x1, x2) ⇒ CMP_CAB_B_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: = ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_>(x1, x2) ⇒ CMP_CAB_B_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_>(x1, x2) ⇒ CMP_CAB_B_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_>=(x1, x2) ⇒ CMP_CAB_B_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: = ≼ ≥",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CAB_B_>=(x1, x2) ⇒ CMP_CAB_B_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_<(x1, x2) ⇒ CMP_CA_AA_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_<(x1, x2) ⇒ CMP_CA_AA_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_<=(x1, x2) ⇒ CMP_CA_AA_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_<=(x1, x2) ⇒ CMP_CA_AA_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_<>(x1, x2) ⇒ CMP_CA_AA_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_<>(x1, x2) ⇒ CMP_CA_AA_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_=(x1, x2) ⇒ CMP_CA_AA_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_=(x1, x2) ⇒ CMP_CA_AA_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: = ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_>(x1, x2) ⇒ CMP_CA_AA_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_>(x1, x2) ⇒ CMP_CA_AA_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_>=(x1, x2) ⇒ CMP_CA_AA_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: = ≼ ≥",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_AA_>=(x1, x2) ⇒ CMP_CA_AA_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_<(x1, x2) ⇒ CMP_CA_A_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_<(x1, x2) ⇒ CMP_CA_A_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_<=(x1, x2) ⇒ CMP_CA_A_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_<=(x1, x2) ⇒ CMP_CA_A_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_<>(x1, x2) ⇒ CMP_CA_A_<(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_<>(x1, x2) ⇒ CMP_CA_A_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_=(x1, x2) ⇒ CMP_CA_A_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_=(x1, x2) ⇒ CMP_CA_A_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: = ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_>(x1, x2) ⇒ CMP_CA_A_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_>(x1, x2) ⇒ CMP_CA_A_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_>=(x1, x2) ⇒ CMP_CA_A_=(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: = ≼ ≥",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_CA_A_>=(x1, x2) ⇒ CMP_CA_A_>(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_<(x1, x2) ⇒ CMP_H_G_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_<(x1, x2) ⇒ CMP_H_G_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_<=(x1, x2) ⇒ CMP_H_G_<(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "order: < ≼ ≤",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_<=(x1, x2) ⇒ CMP_H_G_=(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_<>(x1, x2) ⇒ CMP_H_G_<(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "order: < ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_<>(x1, x2) ⇒ CMP_H_G_>(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_=(x1, x2) ⇒ CMP_H_G_<=(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "order: = ≼ ≤",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_=(x1, x2) ⇒ CMP_H_G_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "order: = ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_>(x1, x2) ⇒ CMP_H_G_<>(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "order: > ≼ ≠",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_>(x1, x2) ⇒ CMP_H_G_>=(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_>=(x1, x2) ⇒ CMP_H_G_=(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "order: = ≼ ≥",
+  "valscope": [],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: CMP_H_G_>=(x1, x2) ⇒ CMP_H_G_>(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "order: > ≼ ≥",
+  "valscope": [
+   "FixMCmpOp"
+  ],
+  "pinolo": [
+   "comparison"
+  ]
+ },
+ {
+  "edit": "swap: DSEL(x1, x2) ⇒ DSELD(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: DSELD ≼ DSEL",
+  "valscope": [
+   "FixMDistinct"
+  ],
+  "pinolo": [
+   "DISTINCT"
+  ]
+ },
+ {
+  "edit": "swap: DSELD(x1, x2) ⇒ DSEL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: DSELD ≼ DSEL",
+  "valscope": [
+   "FixMDistinct"
+  ],
+  "pinolo": [
+   "DISTINCT"
+  ]
+ },
+ {
+  "edit": "swap: EXCEPT(x1, x2) ⇒ EXCEPT_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: EXCEPT ≼ EXCEPT_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: EXCEPT(x1, x2) ⇒ UNION(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: EXCEPT ≼ UNION",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: EXCEPT(x1, x2) ⇒ UNION_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: EXCEPT ≼ UNION_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: EXCEPT_ALL(x1, x2) ⇒ EXCEPT(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: EXCEPT ≼ EXCEPT_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: EXCEPT_ALL(x1, x2) ⇒ UNION_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: EXCEPT_ALL ≼ UNION_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: FALSE_CA ⇒ TRUE_CA",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↑",
+  "why": "order: FALSE ≼ TRUE",
+  "valscope": [],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "swap: FALSE_CAB ⇒ TRUE_CAB",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↑",
+  "why": "order: FALSE ≼ TRUE",
+  "valscope": [],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "swap: FALSE_H ⇒ TRUE_H",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↑",
+  "why": "order: FALSE ≼ TRUE",
+  "valscope": [],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "swap: G_AVG ⇒ G_MAX",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↑",
+  "why": "order: G_AVG ≼ G_MAX",
+  "valscope": [
+   "AggM_AvgToMax"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_AVG ⇒ G_MIN",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↓",
+  "why": "order: G_MIN ≼ G_AVG",
+  "valscope": [
+   "AggM_AvgToMin"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_CNT ⇒ G_CNTD",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↓",
+  "why": "order: G_CNTD ≼ G_CNT",
+  "valscope": [
+   "AggM_CountToCountDistinct"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_CNT ⇒ G_CNTS",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↑",
+  "why": "order: G_CNT ≼ G_CNTS",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_CNTD ⇒ G_CNT",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↑",
+  "why": "order: G_CNTD ≼ G_CNT",
+  "valscope": [
+   "AggM_CountDistinctToCount"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_CNTD ⇒ G_CNTS",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↑",
+  "why": "order: G_CNTD ≼ G_CNTS",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_CNTS ⇒ G_CNT",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↓",
+  "why": "order: G_CNT ≼ G_CNTS",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_CNTS ⇒ G_CNTD",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↓",
+  "why": "order: G_CNTD ≼ G_CNTS",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_MAX ⇒ G_AVG",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↓",
+  "why": "order: G_AVG ≼ G_MAX",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_MAX ⇒ G_MIN",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↓",
+  "why": "order: G_MIN ≼ G_MAX",
+  "valscope": [
+   "AggM_MaxToMin"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_MIN ⇒ G_AVG",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↑",
+  "why": "order: G_MIN ≼ G_AVG",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: G_MIN ⇒ G_MAX",
+  "kind": "swap",
+  "sort": "GAgg",
+  "own_change": "↑",
+  "why": "order: G_MIN ≼ G_MAX",
+  "valscope": [
+   "AggM_MinToMax"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: INTERSECT(x1, x2) ⇒ INTERSECT_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: INTERSECT ≼ INTERSECT_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: INTERSECT(x1, x2) ⇒ UNION(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: INTERSECT ≼ UNION",
+  "valscope": [
+   "FixMIntersect"
+  ],
+  "pinolo": [
+   "UNION / INTERSECT"
+  ]
+ },
+ {
+  "edit": "swap: INTERSECT(x1, x2) ⇒ UNION_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: INTERSECT ≼ UNION_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: INTERSECT_ALL(x1, x2) ⇒ INTERSECT(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: INTERSECT ≼ INTERSECT_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: INTERSECT_ALL(x1, x2) ⇒ UNION_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: INTERSECT_ALL ≼ UNION_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: JDSEL_INNER(x1, x2, x3, x4) ⇒ JDSEL_LEFT(x1, x2, x3, x4)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: JDSEL_INNER ≼ JDSEL_LEFT",
+  "valscope": [
+   "FixMInnerJoin"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: JDSEL_INNER(x1, x2, x3, x4) ⇒ JDSEL_RIGHT(x1, x2, x3, x4)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: JDSEL_INNER ≼ JDSEL_RIGHT",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: JDSEL_LEFT(x1, x2, x3, x4) ⇒ JDSEL_INNER(x1, x2, x3, x4)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: JDSEL_INNER ≼ JDSEL_LEFT",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: JDSEL_RIGHT(x1, x2, x3, x4) ⇒ JDSEL_INNER(x1, x2, x3, x4)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: JDSEL_INNER ≼ JDSEL_RIGHT",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: JSEL_INNER(x1, x2, x3, x4) ⇒ JSEL_LEFT(x1, x2, x3, x4)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: JSEL_INNER ≼ JSEL_LEFT",
+  "valscope": [
+   "FixMInnerJoin"
+  ],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: JSEL_INNER(x1, x2, x3, x4) ⇒ JSEL_RIGHT(x1, x2, x3, x4)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: JSEL_INNER ≼ JSEL_RIGHT",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: JSEL_LEFT(x1, x2, x3, x4) ⇒ JSEL_INNER(x1, x2, x3, x4)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: JSEL_INNER ≼ JSEL_LEFT",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: JSEL_RIGHT(x1, x2, x3, x4) ⇒ JSEL_INNER(x1, x2, x3, x4)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: JSEL_INNER ≼ JSEL_RIGHT",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: OR_CA(x1, x2) ⇒ AND_CA(x1, x2)",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: AND ≼ OR",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: OR_CAB(x1, x2) ⇒ AND_CAB(x1, x2)",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: AND ≼ OR",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: OR_H(x1, x2) ⇒ AND_H(x1, x2)",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "order: AND ≼ OR",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: SEL(x1, x2) ⇒ SELD(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: SELD ≼ SEL",
+  "valscope": [
+   "FixMDistinct"
+  ],
+  "pinolo": [
+   "DISTINCT"
+  ]
+ },
+ {
+  "edit": "swap: SELD(x1, x2) ⇒ SEL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: SELD ≼ SEL",
+  "valscope": [
+   "FixMDistinct"
+  ],
+  "pinolo": [
+   "DISTINCT"
+  ]
+ },
+ {
+  "edit": "swap: TRUE_CA ⇒ FALSE_CA",
+  "kind": "swap",
+  "sort": "CA",
+  "own_change": "↓",
+  "why": "order: FALSE ≼ TRUE",
+  "valscope": [],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "swap: TRUE_CAB ⇒ FALSE_CAB",
+  "kind": "swap",
+  "sort": "CAB",
+  "own_change": "↓",
+  "why": "order: FALSE ≼ TRUE",
+  "valscope": [],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "swap: TRUE_H ⇒ FALSE_H",
+  "kind": "swap",
+  "sort": "H",
+  "own_change": "↓",
+  "why": "order: FALSE ≼ TRUE",
+  "valscope": [],
+  "pinolo": [
+   "predicate to TRUE / FALSE"
+  ]
+ },
+ {
+  "edit": "swap: UNION(x1, x2) ⇒ EXCEPT(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: EXCEPT ≼ UNION",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: UNION(x1, x2) ⇒ INTERSECT(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: INTERSECT ≼ UNION",
+  "valscope": [],
+  "pinolo": [
+   "UNION / INTERSECT"
+  ]
+ },
+ {
+  "edit": "swap: UNION(x1, x2) ⇒ UNION_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↑",
+  "why": "order: UNION ≼ UNION_ALL",
+  "valscope": [
+   "FixMUnionAll"
+  ],
+  "pinolo": [
+   "UNION ALL / UNION"
+  ]
+ },
+ {
+  "edit": "swap: UNION_ALL(x1, x2) ⇒ EXCEPT(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: EXCEPT ≼ UNION_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: UNION_ALL(x1, x2) ⇒ EXCEPT_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: EXCEPT_ALL ≼ UNION_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: UNION_ALL(x1, x2) ⇒ INTERSECT(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: INTERSECT ≼ UNION_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: UNION_ALL(x1, x2) ⇒ INTERSECT_ALL(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: INTERSECT_ALL ≼ UNION_ALL",
+  "valscope": [],
+  "pinolo": []
+ },
+ {
+  "edit": "swap: UNION_ALL(x1, x2) ⇒ UNION(x1, x2)",
+  "kind": "swap",
+  "sort": "Q",
+  "own_change": "↓",
+  "why": "order: UNION ≼ UNION_ALL",
+  "valscope": [
+   "FixMUnionAll"
+  ],
+  "pinolo": [
+   "UNION ALL / UNION"
+  ]
+ }
+]

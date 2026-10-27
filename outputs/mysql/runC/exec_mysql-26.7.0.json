@@ -1,0 +1,1 @@
+{"engine": "mysql-26.7.0", "version": "26.7.0", "seconds": 768.6, "stats": {"G*": {"executed": 300000, "reference violates (T unsound)": 0}}, "records": []}

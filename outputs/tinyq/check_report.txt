@@ -1,0 +1,10 @@
+Check of G* for tinyq: 3000 samples per start symbol, depth budget 1..5, 60 random databases, seed 1, 158.4 s
+
+identical text dropped (=): 439
+pairs checked (=): 2561
+pairs checked (⊆): 3000
+pairs checked (⊇): 3000
+
+rules used, by kind: constant 1856, copy 102380, drop 2441, insert 2439, law 27150, swap 3071
+
+failures: 0

@@ -1,0 +1,22 @@
+{
+  "_comment": "Grammar G of TinyQ in the note's schema. Sorts: NT = Query, NT* = Cond. Atoms A are generated from the schema: for every column c, one production 'C_c θ K_c' per comparison θ allowed for c's type. 'print' uses {0}, {1} for the slots.",
+  "start": "Query",
+  "query_sort": "Query",
+  "pred_sort": "Cond",
+  "base_tables": "from_schema",
+  "operators": [
+    {"op": "WHERE",  "role": "W",    "sort": "Query", "slots": ["Query", "Cond"],  "print": "{0} WHERE {1}"},
+    {"op": "UNION",  "role": "op2",  "sort": "Query", "slots": ["Query", "Query"], "print": "{0} UNION {1}"},
+    {"op": "EXCEPT", "role": "op2",  "sort": "Query", "slots": ["Query", "Query"], "print": "{0} EXCEPT {1}"},
+    {"op": "AND",    "role": "op2*", "sort": "Cond",  "slots": ["Cond", "Cond"],   "print": "{0} AND {1}"},
+    {"op": "OR",     "role": "op2*", "sort": "Cond",  "slots": ["Cond", "Cond"],   "print": "{0} OR {1}"},
+    {"op": "NOT",    "role": "op1*", "sort": "Cond",  "slots": ["Cond"],           "print": "NOT {0}"}
+  ],
+  "atoms": {
+    "comparisons_by_type": {
+      "int":  ["<", "<=", "=", ">=", ">", "<>"],
+      "text": ["=", "<>"]
+    },
+    "print": "{0} {op} {1}"
+  }
+}
